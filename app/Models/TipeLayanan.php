@@ -16,4 +16,8 @@ class TipeLayanan extends Model
         'harga_tipe_layanan',
         'foto_tipe_layanan'
     ];
+
+    public function order(){
+        return $this->hasMany(Pesanan::class, 'tipe_layanan_id');
+    }
 }

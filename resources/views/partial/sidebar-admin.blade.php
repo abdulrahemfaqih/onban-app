@@ -18,6 +18,10 @@
             <i class="fas fa-table mr-3"></i>
             Worker
         </a>
+        <a href="{{ route('admin-orders') }}" class="flex items-center {{ Request::is('admin/orders*') ? 'active-nav-link' : '' }} text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <i class="fas fa-table mr-3"></i>
+            Order
+        </a>
         <a href="{{ route('vouchers.index') }}" class="flex items-center {{ Request::is('admin/vouchers*') ? 'active-nav-link' : '' }} text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
             <i class="fas fa-align-left mr-3"></i>
             Voucher

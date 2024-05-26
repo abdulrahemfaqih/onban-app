@@ -14,25 +14,21 @@ return new class extends Migration
         Schema::create('order', function (Blueprint $table) {
             $table->id('id_order');
             $table->foreignId('customer_id')->references('id_customer')->on('customer')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('worker_id')->references('id_worker')->on('worker')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('voucher_id')->references('id_voucher')->on('voucher')->onDelete('cascade')->onUpdate('cascade');
-            $table->enum('status_order', ['Menunggu Pekerja', 'Diproses', 'Selesai', 'Dibatalkan']);
-            $table->foreignId('metode_pembayaran_id')->references('id_metode_pembayaran')->on('metode_pembayaran')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('tipe_layanan_id')->references('id_tipe_layanan')->on('tipe_layanan')->onDelete('cascade')->onUpdate('cascade');
-            $table->enum('status_pembayaran', ['Menunggu', 'Berhasil', 'Gagal']);
-            $table->integer('total_harga');
-            $table->float('jarak');
-            $table->text('catatan');
-            $table->string('alamat');
-            $table->decimal('latitude', 10, 8);
-            $table->decimal('longitude', 11, 8);
-            $table->date('tanggal');
-            $table->time('waktu');
+            $table->foreignId('worker_id')->nullable()->references('id_worker')->on('worker')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('voucher_id')->nullable()->references('id_voucher')->on('voucher')->onDelete('cascade')->onUpdate('cascade');
+            $table->enum('status_order', ['Menunggu Pekerja', 'Diproses', 'Selesai', 'Dibatalkan'])->nullable();
+            $table->foreignId('tipe_layanan_id')->nullable()->references('id_tipe_layanan')->on('tipe_layanan')->onDelete('cascade')->onUpdate('cascade');
+            $table->enum('status_pembayaran', ['Menunggu', 'Berhasil', 'Gagal'])->nullable();
+            $table->decimal('total_harga', 15, 2)->nullable();
+            $table->float('jarak')->nullable();
+            $table->text('catatan')->nullable();
+            $table->text('alamat')->nullable();
+            $table->decimal('latitude', 10, 8)->nullable();
+            $table->decimal('longitude', 11, 8)->nullable();
+            $table->date('tanggal')->nullable();
+            $table->time('waktu')->nullable();
             $table->timestamps();
 
-            // foreign ke kode voucher
-
-            // $table->foreign('kode_voucher')->references('kode_voucher')->on('voucher')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -4,8 +4,11 @@
 @endphp
 @section('content')
     <div class="w-full mt-6">
+        @if (session()->has('success'))
+            @include('partial.alert-success', ['message' => session()->get('success')])
+        @endif
         @if ($semuaWorker->count() > 0)
-  
+
             <div class="bg-white overflow-auto">
                 <table class="min-w-full leading-normal">
                     <thead>
@@ -44,7 +47,7 @@
                         @foreach ($semuaWorker as $worker)
                             @php
                                 $nomor_urut++;
-                            @endphp     
+                            @endphp
                             <tr>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <p class="text-gray-900 whitespace-no-wrap">{{ $nomor_urut }}</p>

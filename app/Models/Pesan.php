@@ -14,6 +14,5 @@ class Pesan extends Model
         'pesan',
         'tanggal',
         'time'
-
     ];
 }

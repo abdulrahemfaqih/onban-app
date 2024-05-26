@@ -42,8 +42,8 @@ class WorkerRegisterController extends Controller
 
         if ($request->hasFile('foto_formal')) {
             $fotoFormalPath = $request->file('foto_formal')->store('worker');
-
         }
+        
         $login = User::create([
             'username' => $request->username,
             'email' => $request->email,
