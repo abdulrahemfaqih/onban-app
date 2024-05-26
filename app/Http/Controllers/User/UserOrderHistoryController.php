@@ -2,17 +2,23 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
+use App\Models\Pesanan;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class UserOrderHistoryController extends Controller
 {
     public function index()
     {
+        $orders = Pesanan::with('customer', 'worker', 'tipe_layanan', 'voucher')
+        ->where('customer_id', auth()->user()->customer->id_customer)
+        ->where('status_pembayaran', 'Berhasil')
+        ->where('status_order', 'selesai')
+        ->get();
+
         return view('user.orderHistory', [
             "title" => "Histori Order",
-            "nama" => session('userData')->customer->nama,
-            "role" => session('userData')->role
+            "orders" => $orders
         ]);
     }
 }
