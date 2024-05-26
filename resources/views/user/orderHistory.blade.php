@@ -7,43 +7,51 @@
 
     {{-- list Histori --}}
     <ol class="relative border-s border-gray-200 dark:border-gray-700">
-        <li class="mb-8 ms-4">
-            <div
-                class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
-            </div>
-            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">February 2022</time>
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Order untuk mobil</h3>
+        @if ($orders->count() > 0)
+            @foreach ($orders as $order)
+                <li class="mb-8 ms-4">
+                    <div
+                        class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
+                    </div>
+                    <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">February 2022</time>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white"></h3>
 
-            <div class="gap-10 flex">
-                <div class="flex flex-col">
-                    <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
-                        Harga
-                        <br>
-                        Jarak
-                        <br>
-                        harga/km
-                        <br>
-                        Total
-                    </p>
-                </div>
-                <div class="flex flex-col">
-                    <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
-                        Rp 40.000
-                        <br>
-                        5km
-                        <br>
-                        Rp 3000
-                        <br>
-                        Rp 55.000
-                    </p>
-                </div>
+                    <div class="gap-10 flex">
+                        <div class="flex flex-col">
+                            <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
+                                Harga
+                                <br>
+                                Jarak
+                                <br>
+                                harga/km
+                                <br>
+                                Total
+                            </p>
+                        </div>
+                        <div class="flex flex-col">
+                            <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
+                                {{ $order->total_harga }}
+                                <br>
+                                {{ $order->jarak }}
+                                <br>
+                                Rp 3000
+                                <br>
+                                {{ $order->total_harga }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 text-base font-normal text-gray-500 dark:text-gray-400">
+                        <p class="">Worker </p>
+                        <p>:</p>
+                        <p>{{ $order->worker->nama }}</p>
+                    </div>
+                </li>
+            @endforeach
+        @else
+            <div class="flex justify-center text-center text-base md:text-xl text-red-500">
+                <p>Anda belum pernah melakukan order.</p>
             </div>
-            <div class="flex gap-4 text-base font-normal text-gray-500 dark:text-gray-400">
-                <p class="">Worker </p>
-                <p>:</p>
-                <p>Mr. Ahmad Alex Sujagat</p>
-            </div>
-        </li>
+        @endif
 
     </ol>
 
