@@ -70,10 +70,21 @@ class WorkerOrderController extends Controller
         ]);
     }
 
+    public function konfirmasiPembayaran($id_order){
+        $order = Pesanan::with(['customer', 'tipe_layanan'])->findOrFail($id_order);
+        return view('worker.konfirmasiPembayaran', [
+            "title" => "Konfirmasi pembayaran",
+            "order" => $order,
+            "role" => session('userData')->role,
+            "worker" => session('userData')->worker,
+        ]);
+    }
+
     public function finishedOrder($id_order)
     {
         $order = Pesanan::with(['customer', 'tipe_layanan'])->findOrFail($id_order);
         $order->status_order = 'Selesai';
+        $order->status_pembayaran = 'Berhasil';
         $order->save();
         return redirect()->route('worker-home');
     }

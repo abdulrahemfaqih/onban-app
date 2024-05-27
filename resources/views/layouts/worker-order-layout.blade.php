@@ -20,7 +20,7 @@
         <div class="container px-7 space-y-6">
             @yield('content')
         </div>
-        @include('partial.footer-worker-order')
+        @yield('footer')
     </div>
 </body>
 </html>
