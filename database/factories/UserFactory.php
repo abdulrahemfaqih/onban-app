@@ -31,7 +31,7 @@ class UserFactory extends Factory
             'username' => $this->faker->userName(),
             'email' => $this->faker->unique()->safeEmail(),
             'password' => "password",
-            'role' => "admin",
+            'role' => "user",
         ];
     }
 
