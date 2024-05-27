@@ -22,7 +22,7 @@
     <div class="z-40 absolute left-1/2  justify-center  right-1/2 content-center translate-x-[-50%] w-3/4 mx-auto top-[50%] font-bold text-center"
         x-data="{ open: false }">
         <div class="mx-auto w-1/2 text-secondary flex flex-col" x-on:click="open = ! open">
-            @svg('feathericon-edit-2', 'text-black opacity-90 mx-auto w-8')
+            <img src="{{asset('assets/images/edit-profile.svg')}}" alt="Edit" class="w-6 mx-auto">
             <p class="text-sm">Edit Profile</p>
             <hr class="w-24 border-1 mt-2 border-black mx-auto">
         </div>
