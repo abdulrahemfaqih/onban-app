@@ -127,6 +127,7 @@ Route::prefix('worker')->group(function () {
         Route::get("/home/pendapatan", WorkerPendapatanController::class)->name('worker-pendapatan');
         Route::get("/home/ulasan", WorkerUlasanController::class)->name('worker-ulasan');
         Route::get("/order/{id_order}", [WorkerOrderController::class, 'ambilOrder'])->name('worker-order');
+        Route::get("/order/{id_order}/pembayaran", [WorkerOrderController::class, 'konfirmasiPembayaran'])->name('worker-order-konfirmasi-pembayaran');
         Route::get("/order/{id_order}/selesai", [WorkerOrderController::class, 'finishedOrder'])->name('worker-order-selesai');
         Route::post("/status-terima-order", [WorkerUpdateStatusOrder::class, "updateStatus"])->name('status-terima-order');
     });
