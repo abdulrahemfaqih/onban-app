@@ -24,7 +24,7 @@
             <div class="flex flex-col justify-center">
                 <p class="text-lg text-gray-800 font-bold leading-6">Total Pendapatan</p>
                 <p class="text-xs">1 Mei - 30 Mei 2024</p>
-                <h1 class="text-2xl text-primary font-bold">Rp{{ $orders->sum('total_harga') }}</h1>
+                <h1 class="text-2xl text-primary font-bold">Rp{{ round($orders->sum('total_harga')) }}</h1>
             </div>
             <div class="">
                 <p class="text-center">Status Work</p>
