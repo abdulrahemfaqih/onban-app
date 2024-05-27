@@ -13,6 +13,8 @@
         <div class="flex justify-center text-center text-base md:text-xl">
             <p>Tambal Ban Online: Perbaikan Ban Langsung ke Lokasi Anda!</p>
         </div>
+
+       
         @if (session()->has('success'))
             @include('partial.alert-success', ['message' => session()->get('success')])
         @endif
@@ -34,6 +36,8 @@
                 </a>
             </div>
         @endif
+
+
 
 
         {{-- navigation bar --}}
@@ -65,7 +69,7 @@
                     class="w-[22%] text-white h-full my-auto text-center flex flex-col justify-center mx-auto content-center ">
                     <a href="{{ route('orderHistory') }}" class="flex flex-col  mx-auto justify-center content-center">
                         <div>
-                            @svg('tni-history', 'w-8 mx-auto')
+                            <img src="{{ asset('assets/images/histri-icon.svg') }}" alt="histori" class="w-10 ">
                         </div>
                         <div>
                             <p class="text-sm">Histori</p>
