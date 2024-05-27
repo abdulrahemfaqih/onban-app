@@ -60,6 +60,10 @@ Route::prefix('register')->group(function () {
 // Route Customer
 Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::get("/home", HomeController::class)->name('home');
+    // Route rofile
+    Route::get("/user/profile", [UserProfileController::class, "index"])->name('profile');
+    Route::post("/user/profile", [UserProfileController::class, "updateProfile"])->name('udpate-profile');
+    // Route Order History
     Route::get("/user/orderHistory", [UserOrderHistoryController::class, "index"])->name('orderHistory');
     // Route Order
     Route::get("/order/cancel/{id_order}", [CancelUserOrderController::class, "cancelOrder"])->name('cancel-order');
@@ -72,7 +76,7 @@ Route::middleware(['auth', 'is_customer'])->group(function () {
 
     Route::get("/order/find-worker", FindWorkerController::class)->name('worker-find');
     Route::get("/user/vouchers", [UserVoucherController::class, "index"])->name('voucher');
-    Route::get("/user/profile", [UserProfileController::class, "index"])->name('profile');
+
     Route::get("/user/userChat", [UserChatController::class, "index"])->name('userChat');
     Route::get("/order/payment-info", [PaymentInfoController::class, "index"])->name('payment-info');
 });
