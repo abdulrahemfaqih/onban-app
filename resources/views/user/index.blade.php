@@ -4,7 +4,7 @@
     <div class="flex justify-center flex-col gap-10 lg:gap-14 md:gap-40 h-full">
         <div id="foto_profile"
             class="mx-auto absolute w-40 h-40 top-28 left-1/2 overflow-hidden right-1/2 translate-x-[-50%] border-white border-4 rounded-full">
-            <img src="{{ asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}" alt=""
+            <img src="{{ isset($customer->foto_profil) ? asset('storage/' . $customer->foto_profil) : asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}" alt=""
                 class="object-cover border-white border-b-2">
         </div>
         <div class="flex justify-center ">
@@ -14,7 +14,8 @@
             <p>Tambal Ban Online: Perbaikan Ban Langsung ke Lokasi Anda!</p>
         </div>
 
-       
+
+
         @if (session()->has('success'))
             @include('partial.alert-success', ['message' => session()->get('success')])
         @endif
@@ -57,7 +58,7 @@
                     <a href="{{ route('profile') }}" class="flex flex-col  mx-auto justify-center content-center">
                         <div
                             class="w-[60%] h-[50%] lg:w-[40%] lg:h-[46%] overflow-hidden mx-auto content-center justify-center rounded-full ">
-                            <img src="{{ asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}" alt=""
+                            <img src="{{ isset($customer->foto_profil) ? asset('storage/' . $customer->foto_profil) : asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}" alt=""
                                 class=" object-cover mx-auto">
                         </div>
                         <div>

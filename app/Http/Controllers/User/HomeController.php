@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use App\Models\Pesan;
 use App\Models\Pesanan;
 use Illuminate\Http\Request;
+
+use function Laravel\Prompts\select;
 
 class HomeController extends Controller
 {
@@ -14,14 +17,16 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $userId = session('userData')->customer->id_customer;
-        $pendingOrder = Pesanan::where('customer_id', $userId)
+        $customer = Customer::where('id_customer', session('userData')->customer->id_customer)->first();
+        $pendingOrder = Pesanan::where('customer_id', $customer->id_customer)
             ->whereIn('status_order', ['Menunggu Pekerja', 'Diproses'])
             ->first();
 
+        $profileFoto = $customer->foto_profil;
         return view('user.index', [
+            'customer' => $customer,
             "title" => "Home",
-            "nama" => session('userData')->customer->nama,
+            "nama" => $customer->nama,
             "pendingOrder" => $pendingOrder
         ]);
     }
