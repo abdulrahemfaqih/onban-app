@@ -10,7 +10,7 @@
 
     <div
         class="absolute top-28 lg:top-28 rounded-full md:top-48 mt-2 mx-auto w-32 h-32 left-1/2 right-1/2 translate-x-[-50%] z-40 overflow-hidden content-center">
-        <img src="{{ asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}" alt="profile" class="object-cover">
+        <img src="{{ isset($profile->foto_profil) ? asset('storage/' . $profile->foto_profil) : asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}" alt="profile" class="object-cover">
 
     </div>
 
@@ -25,6 +25,11 @@
             <img src="{{asset('assets/images/edit-profile.svg')}}" alt="Edit" class="w-6 mx-auto">
             <p class="text-sm">Edit Profile</p>
             <hr class="w-24 border-1 mt-2 border-black mx-auto">
+        </div>
+        <div class="mt-4">
+            @if (session()->has('success'))
+                @include('partial.alert-success', ['message' => session()->get('success')])
+            @endif
         </div>
 
         {{-- form edit profile --}}
@@ -74,6 +79,17 @@
                 </div>
             </div>
             <div class="flex flex-wrap -mx-3 mb-2">
+                <div class="w-full  px-3 mb-6 md:mb-0">
+                    <label class="block uppercase text-start tracking-wide text-gray-700 text-xs font-bold mb-2"
+                        for="grid-city">
+                        No Hp
+                    </label>
+                    <input
+                        class="appearance-none block w-full  text-gray-700 border border-b-gray-400 border-t-0 border-x-0  py-3 px-4 leading-tight focus:outline-none focus:ring-0 focus:bg-white focus:border-gray-500"
+                        id="grid-city" type="text" name="no_hp" value="{{ $profile->no_hp }}">
+                </div>
+            </div>
+            <div class="flex flex-wrap -mx-3 mb-2">
                 <div class="w-full  px-3 mb-6 md:mb-0 mt-4">
                     <label class="block uppercase text-start tracking-wide text-gray-700 text-xs font-bold mb-2"
                         for="grid-city">
@@ -81,7 +97,7 @@
                     </label>
                     <input
                         class="appearance-none block w-full  text-gray-700 border border-b-gray-400 border-t-0 border-x-0  py-3 px-4 leading-tight focus:outline-none focus:ring-0 focus:bg-white focus:border-gray-500"
-                        id="grid-city" type="file" type="file" value="{{ isset($profile->foto_profil) ? $profile->foto_profil : "" }}">
+                        id="grid-city" type="file" type="file" name="foto_profil" value="{{ isset($profile->foto_profil) ? $profile->foto_profil : "" }}">
                 </div>
             </div>
             <input type="submit" name="submit" id="" value="Kirim"
