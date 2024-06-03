@@ -74,7 +74,7 @@ Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::get("/order/{id_order}/konfirmasi_order", [KonfirmasiOrderController::class, "konfirmasiOrder"])->name('konfirmasi-order');
     Route::post("/order/update-location", [UpdateStatusOrderController::class, "updateStatusAndPosition"])->name('update-location');
 
-    Route::get("/order/find-worker", FindWorkerController::class)->name('worker-find');
+    Route::get("/order/{id}/find-worker", FindWorkerController::class)->name('worker-find');
     Route::get("/user/vouchers", [UserVoucherController::class, "index"])->name('voucher');
 
     Route::get("/user/userChat", [UserChatController::class, "index"])->name('userChat');
