@@ -4,8 +4,8 @@
     <div class="flex justify-center flex-col gap-10 lg:gap-14 md:gap-40 h-full">
         <div id="foto_profile"
             class="mx-auto absolute w-40 h-40 top-28 left-1/2 overflow-hidden right-1/2 translate-x-[-50%] border-white border-4 rounded-full">
-            <img src="{{ isset($customer->foto_profil) ? asset('storage/' . $customer->foto_profil) : asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}" alt=""
-                class="object-cover border-white border-b-2">
+            <img src="{{ isset($customer->foto_profil) ? asset('storage/' . $customer->foto_profil) : asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}"
+                alt="" class="object-cover border-white border-b-2">
         </div>
         <div class="flex justify-center ">
             <h1 class="text-black text-4xl flex mt-20 "> {{ $nama }}</h1>
@@ -26,7 +26,7 @@
                 </div>
             @elseif ($pendingOrder->status_order === 'Diproses')
                 <div class="flex justify-center text-center text-base md:text-xl text-yellow-500">
-                    <p>Orderan Anda sedang diproses oleh worker.</p>
+                    <a href="{{ route('worker-find', $pendingOrder->id_order) }}">klik untuk menuju pesanana anda, worker telah di temukan</a>
                 </div>
             @endif
         @else
@@ -37,19 +37,22 @@
                 </a>
             </div>
         @endif
-
-
-
-
+        {{-- <div id='map' style='width: 400px; height: 300px;'></div> --}}
         {{-- navigation bar --}}
-
-       @include('partial.navigation-user')
+        @include('partial.navigation-user')
     </div>
 @endsection
 @section('js')
     {{-- hide navigation bar when scrolling --}}
     <script>
+        // mapboxgl.accessToken = 'pk.eyJ1IjoiYWJkdWxyYWhlbWZhcWloIiwiYSI6ImNsd3l4Nm5pNjAxZzYyanNlaGp1eW41dmQifQ.fyJP2_k7LV4_3NCH9sAFWw';
+        // var map = new mapboxgl.Map({
+        //     container: 'map',
+        //     style: 'mapbox://styles/mapbox/streets-v11'
+        // });
+
         const footbar = document.querySelector('#footbar');
+
         let isScrolling;
         window.addEventListener('scroll', () => {
             clearTimeout(isScrolling);

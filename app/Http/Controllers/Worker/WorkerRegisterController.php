@@ -31,8 +31,8 @@ class WorkerRegisterController extends Controller
             'email' => 'required|email',
             'password' => 'required',
             'konfirmasi_password' => 'required|same:password',
-            "foto_ktp" => "file|max:2048",
-            "foto_formal" => "file|max:2048",
+            "foto_ktp" => "required|file|max:2048",
+            "foto_formal" => "required|file|max:2048",
             "jenis_kelamin" => "required"
         ]);
 
@@ -43,7 +43,7 @@ class WorkerRegisterController extends Controller
         if ($request->hasFile('foto_formal')) {
             $fotoFormalPath = $request->file('foto_formal')->store('worker');
         }
-        
+
         $login = User::create([
             'username' => $request->username,
             'email' => $request->email,
