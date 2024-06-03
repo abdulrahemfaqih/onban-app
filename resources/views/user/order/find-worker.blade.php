@@ -7,8 +7,15 @@
         src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7917.826116690897!2d{{ $order->longitude }}!3d{{ $order->latitude }}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1716094381407!5m2!1sid!2sid"
         allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
+        <div class="mt-72 flex flex-col gap-4">
+            <div class="flex space-x-2">
+                <p class="border border-gray-300 p-3 rounded-lg shadow">{{ $order->jarak }}</p>
+                <p class="border border-gray-300 p-3 rounded-lg shadow">Estimasi Biaya: {{ $order->total_harga }} </p>
+            </div>
+            <p class="border border-gray-300 p-3 rounded-lg shadow">Lokasi User: {{ $order->alamat }}, {{ $order->catatan }}</p>
+        </div>
 
-        <div class="w-full mx-auto h-56 bg-primary mt-56 rounded-md flex flex-col flex-wrap lg:w-2/3 md:w-3/4">
+        <div class="w-full mx-auto h-56 bg-primary mt-6 rounded-md flex flex-col flex-wrap lg:w-2/3 md:w-3/4">
             <div class="w-full h-3/4  flex lg:px-32">
                 <div class="w-20 rounded-full h-20">
                     <img class="w-3/4 h-3/4 mx-auto mt-2  border-gray-300 border-2 rounded-full"

@@ -1,6 +1,6 @@
  <div class="mt-auto w-[95%] md:w-2/4 bg-[#FF802A] h-16  bottom-2 justify-center mx-auto my-auto content-center rounded-lg drop-shadow-lg lg:w-2/5 fixed translate-x-[-50%] left-1/2 right-1/2 mb-4 md:mb-8"
      id='footbar'>
-     <div class="flex w-full h-2/3 justify-center mx-auto content-center gap-8 my-auto ml-4">
+     <div class="flex w-full h-2/3 justify-center mx-auto content-center gap-8 my-auto ml-4 lg:ml-6 ">
          <div class="w-[20%] text-white h-full text-center flex flex-col justify-center">
              <a href="{{ route('voucher') }}">
                  <img class="w-2/4 lg:w-1/3 mx-auto h-2/3" src="{{ asset('assets/images/voucher.svg') }}" alt="voucher">
