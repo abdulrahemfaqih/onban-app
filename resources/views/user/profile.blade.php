@@ -26,10 +26,12 @@
             <p class="text-sm">Edit Profile</p>
             <hr class="w-24 border-1 mt-2 border-black mx-auto">
         </div>
-        <div class="mt-4">
-            @if (session()->has('success'))
-                @include('partial.alert-success', ['message' => session()->get('success')])
-            @endif
+        <div class="mt-4 w-full">
+            <div class="lg:w-2/3 w-72 mx-auto">
+                @if (session()->has('success'))
+                    @include('partial.alert-success', ['message' => session()->get('success')])
+                @endif
+            </div>
         </div>
 
         {{-- form edit profile --}}
