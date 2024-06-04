@@ -63,7 +63,7 @@
                 </div>
                 <div
                     class="w-[22%] text-white h-full my-auto text-center flex flex-col justify-center mx-auto content-center ">
-                    <a href="{{ route('orderHistory') }}" class="flex flex-col  mx-auto justify-center content-center">
+                    <a href="{{ route('orderHistory') }}" class="flex flex-col mx-auto justify-center content-center">
                         <div>
                             @svg('tni-history', 'w-8 mx-auto')
                         </div>
