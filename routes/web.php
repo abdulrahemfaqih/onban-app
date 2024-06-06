@@ -142,11 +142,10 @@ Route::prefix('worker')->group(function () {
 
 // Route AppGuide
 Route::prefix('/help')->group(function () {
-    Route::get('/user', [AppGuideController::class, 'indexuser'])->name('user-help');
-    Route::get('/user/{category}', [AppGuideController::class, 'indexguidepanduan'])->name('panduan');
+    Route::get('/user', [AppGuideController::class, 'showuser'])->name('user-help');
 
     Route::prefix('/worker')->group(function () {
-        Route::get('/', [AppGuideController::class, 'indexworker'])->name('worker-help');
+        Route::get('/', [AppGuideController::class, 'showworker'])->name('worker-help');
     });
 });
 
