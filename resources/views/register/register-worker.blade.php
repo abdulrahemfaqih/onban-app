@@ -121,6 +121,9 @@
                     <label for="orange-radio"
                         class="ms-2 text-sm font-medium text-white dark:text-gray-300">Perempuan</label>
                 </div>
+                @error('jenis_kelamin')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
             </div>
             <div class="flex justify-center flex-col ">
                 <button type="submit"

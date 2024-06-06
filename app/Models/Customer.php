@@ -22,9 +22,9 @@ class Customer extends Model
         'jenis_kelamin'
     ];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
+
+    public function user() {
+        return $this->belongsTo(User::class, 'login_id');
     }
 
     public function order()

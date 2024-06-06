@@ -4,8 +4,10 @@
     <div class="flex justify-center flex-col gap-10 lg:gap-14 md:gap-40 h-full">
         <div id="foto_profile"
             class="mx-auto absolute w-40 h-40 top-28 left-1/2 overflow-hidden right-1/2 translate-x-[-50%] border-white border-4 rounded-full">
-            <img src="{{ asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}" alt=""
-                class="object-cover border-white border-b-2">
+            <img src="{{ isset($customer->foto_profil) ? asset('storage/' . $customer->foto_profil) : asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}"
+                alt="" class="object-cover border-white border-b-2">
+            <img src="{{ isset($customer->foto_profil) ? asset('storage/' . $customer->foto_profil) : asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}"
+                alt="" class="object-cover border-white border-b-2">
         </div>
         <div class="flex justify-center ">
             <h1 class="text-black text-4xl flex mt-20 "> {{ $nama }}</h1>
@@ -13,81 +15,92 @@
         <div class="flex justify-center text-center text-base md:text-xl">
             <p>Tambal Ban Online: Perbaikan Ban Langsung ke Lokasi Anda!</p>
         </div>
-        @if (session()->has('success'))
-            @include('partial.alert-success', ['message' => session()->get('success')])
-        @endif
-        @if ($pendingOrder)
-            @if ($pendingOrder->status_order === 'Menunggu Pekerja')
-                <div class="flex justify-center text-center text-base md:text-xl text-red-500">
-                    <p>Mohon tunggu worker untuk mengambil orderan Anda.</p>
-                </div>
-            @elseif ($pendingOrder->status_order === 'Diproses')
-                <div class="flex justify-center text-center text-base md:text-xl text-yellow-500">
-                    <p>Orderan Anda sedang diproses oleh worker.</p>
-                </div>
+
+
+        <div class="lg:w-1/3 mx-auto absolute  translate-x-[-50%] left-1/2 right-1/2 w-3/4 lg:top-[55%] top-[65%] ">
+            @if (session()->has('success'))
+                @include('partial.alert-success', ['message' => session()->get('success')])
             @endif
-        @else
-            <div class="flex justify-center w-full h-16 md:h-20 lg:h-14 mt-14 ">
-                <a href="{{ route('create-order') }}"
-                    class="bg-[#FF802A] text-center lg:w-1/4 xl:w-1/4 md:w-1/2 w-3/4 h-full justify-center flex flex-col px-10 py-6 rounded-lg text-white xl:border-none lg:border-none border-none hover:bg-[#f78000d6] shadow-lg md:text-xl"><b>Pesan
-                        Sekarang</b>
+        </div>
+
+    </div>
+    @if ($pendingOrder)
+        @if ($pendingOrder->status_order === 'Menunggu Pekerja')
+            <div class="flex justify-center w-full h-16  md:h-24 lg:h-24 mt-14 ">
+                <a href=""
+                    class="bg-[#FF802A] text-center lg:w-1/4 xl:w-1/4 md:w-1/2 text-sm w-3/4 h-full justify-center flex flex-col px-10 py-6 rounded-lg text-white xl:border-none lg:border-none border-none hover:bg-[#f78000d6] shadow-lg md:text-xl"><b>Mohon
+                        tunggu worker untuk mengambil orderan Anda.</b>
+                </a>
+            </div>
+        @elseif ($pendingOrder->status_order === 'Diproses')
+            <div class="flex justify-center w-full h-16  md:h-24 lg:h-24 mt-14 ">
+                <a href="{{ route('worker-find', $pendingOrder->id_order) }}"
+                    class="bg-primary text-center rounded-md h-full lg:w-1/4 xl:w-1/4 md:w-1/2 w-3/4 content-center text-white"><b>Orderan
+                        Anda sedang diproses oleh worker</b>
                 </a>
             </div>
         @endif
+    @else
+        <div class="flex justify-center w-full h-16 md:h-20 lg:h-14 mt-14 ">
+            <a href="{{ route('create-order') }}"
+                class="bg-[#FF802A] text-center lg:w-1/4 xl:w-1/4 md:w-1/2 w-3/4 h-full justify-center flex flex-col px-10 py-6 rounded-lg text-white xl:border-none lg:border-none border-none hover:bg-[#f78000d6] shadow-lg md:text-xl"><b>Pesan
+                    Sekarang</b>
+            </a>
+        </div>
+    @endif
 
 
-        {{-- navigation bar --}}
 
-        <div class="w-full  md:w-2/4 mt-4 bg-[#FF802A] h-16 flex justify-center mx-auto my-auto content-center rounded-lg drop-shadow-lg lg:w-2/5 sticky bottom-10"
-            id='footbar'>
-            <div class="flex w-full h-2/3 justify-center mx-auto content-center  gap-8 my-auto ">
-                <div class="w-[28%]  text-white  h-full  text-center flex flex-col justify-center ">
-                    <a href="{{ route('voucher') }}">
-                        <img class="w-2/4 lg:w-1/3 mx-auto h-2/3" src="{{ asset('assets/images/voucher.svg') }}"
-                            alt="voucher">
-                        <p class="text-sm">Voucher</p>
-                    </a>
-                </div>
-                <div
-                    class="w-[22%] text-white h-full my-auto text-center flex flex-col justify-center mx-auto content-center ">
-                    <a href="{{ route('profile') }}" class="flex flex-col  mx-auto justify-center content-center">
-                        <div
-                            class="w-[60%] h-[50%] lg:w-[40%] lg:h-[46%] overflow-hidden mx-auto content-center justify-center rounded-full ">
-                            <img src="{{ asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}" alt=""
-                                class=" object-cover mx-auto">
-                        </div>
-                        <div>
-                            <p class="text-sm">Akun</p>
-                        </div>
-                    </a>
-                </div>
-                <div
-                    class="w-[22%] text-white h-full my-auto text-center flex flex-col justify-center mx-auto content-center ">
-                    <a href="{{ route('orderHistory') }}" class="flex flex-col mx-auto justify-center content-center">
-                        <div>
-                            @svg('tni-history', 'w-8 mx-auto')
-                        </div>
-                        <div>
-                            <p class="text-sm">Histori</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="w-[28%]  text-white  h-full  text-center flex flex-col justify-center ">
-                    <a href="{{ route('logout') }}" id="logout"
-                        class="w-14 text-white h-full text-center flex flex-col justify-center ">
-                        <img class="pl-4 w-3/4 h-3/4" src="{{ asset('assets/images/logout.svg') }}" id="imgLogout"
-                            alt="logout">
-                        <p class="text-sm">Logout</p>
-                    </a>
-                </div>
+    {{-- navigation bar --}}
+    {{-- @include('partial.navigation-user') --}}
+    <div class="mt-auto w-[95%] md:w-2/4 bg-[#FF802A] h-16  bottom-2 justify-center mx-auto my-auto content-center rounded-lg drop-shadow-lg lg:w-2/5 fixed translate-x-[-50%] left-1/2 right-1/2 mb-4 md:mb-8"
+        id='footbar'>
+        <div class="flex w-full h-2/3 justify-center mx-auto content-center gap-8 my-auto ml-4">
+            <div class="w-[20%] text-white h-full text-center flex flex-col justify-center">
+                <a href="{{ route('voucher') }}">
+                    <img class="w-2/4 lg:w-1/3 mx-auto h-2/3" src="{{ asset('assets/images/voucher.svg') }}" alt="voucher">
+                    <p class="text-sm">Voucher</p>
+                </a>
+            </div>
+            <div class="w-[20%] text-white h-full my-auto text-center flex flex-col justify-center mx-auto content-center">
+                <a href="{{ route('profile') }}" class="flex flex-col mx-auto justify-center content-center">
+                    <div
+                        class="w-[60%] h-[50%] lg:w-[40%] lg:h-[46%] overflow-hidden mx-auto content-center justify-center rounded-full">
+                        <img src="{{ isset($customer->foto_profil) ? asset('storage/' . $customer->foto_profil) : asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}"
+                            alt="" class="object-cover mx-auto">
+                    </div>
+                    <div>
+                        <p class="text-sm">Akun</p>
+                    </div>
+                </a>
+            </div>
+            <div class="w-[22%] text-white h-full my-auto text-center flex flex-col justify-center mx-auto content-center">
+                <a href="{{ route('orderHistory') }}" class="flex flex-col mx-auto justify-center content-center">
+                    <div>
+                        <img src="{{ asset('assets/images/histri-icon.svg') }}" alt="histori" class="w-10">
+                    </div>
+                    <div>
+                        <p class="text-sm">Histori</p>
+                    </div>
+                </a>
+            </div>
+            <div class="w-[28%] text-white h-full text-center flex flex-col justify-center">
+                <a href="{{ route('logout') }}" id="logout"
+                    class="w-14 text-white h-full text-center flex flex-col justify-center">
+                    <img class="pl-4 w-3/4 h-3/4" src="{{ asset('assets/images/logout.svg') }}" id="imgLogout"
+                        alt="logout">
+                    <p class="text-sm">Logout</p>
+                </a>
             </div>
         </div>
     </div>
+
 @endsection
 @section('js')
     {{-- hide navigation bar when scrolling --}}
     <script>
         const footbar = document.querySelector('#footbar');
+
         let isScrolling;
         window.addEventListener('scroll', () => {
             clearTimeout(isScrolling);
