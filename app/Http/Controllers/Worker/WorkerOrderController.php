@@ -10,21 +10,21 @@ use GuzzleHttp\Client;
 class WorkerOrderController extends Controller
 {
 
-    public function hitungJarak($latCustomer, $longCustomer, $latWorker, $longWorker)
+    private function getMapboxDistance($latWorker, $longWorker, $latCustomer, $longCustomer)
     {
-        $earthRadius = 6371; // Radius of the earth in kilometers
+        $accessToken = env('MAPBOX_ACCESS_TOKEN');
+        $client = new Client();
+        $url = "https://api.mapbox.com/directions/v5/mapbox/driving/$longWorker,$latWorker;$longCustomer,$latCustomer?geometries=geojson&access_token=$accessToken";
 
-        $latFrom = deg2rad($latCustomer);
-        $lonFrom = deg2rad($longCustomer);
-        $latTo = deg2rad($latWorker);
-        $lonTo = deg2rad($longWorker);
+        $response = $client->get($url);
+        $data = json_decode($response->getBody(), true);
 
-        $latDelta = $latTo - $latFrom;
-        $lonDelta = $lonTo - $lonFrom;
-
-        $angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) +
-            cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
-        return $angle * $earthRadius;
+        if (isset($data['routes'][0]['distance'])) {
+            $distance = $data['routes'][0]['distance'] / 1000;
+            return $distance;
+        } else {
+            return null;
+        }
     }
     public function ambilOrder(string $id_order)
     {
@@ -38,15 +38,17 @@ class WorkerOrderController extends Controller
         $longCustomer = $order->longitude;
 
         // hitung jarak antara worker dan customer
-        $jarak = $this->hitungJarak($latWorker, $longWorker, $latCustomer, $longCustomer);
+        $jarak = $this->getMapboxDistance($latWorker, $longWorker, $latCustomer, $longCustomer);
 
+        // ambil voucher yang dipakai
+        $voucher = $order->voucher->potongan_harga ?? 0;
 
         // harga per km
         $hargaPerKm = 3000;
 
         // hitung total harga
         $hargaLayanan = $order->tipe_layanan->harga_tipe_layanan;
-        $totalHarga = $hargaLayanan + ($hargaPerKm * $jarak);
+        $totalHarga = $hargaLayanan + ($hargaPerKm * $jarak) * $voucher;
 
         // update order
         $order->total_harga = $totalHarga;
@@ -70,7 +72,8 @@ class WorkerOrderController extends Controller
         ]);
     }
 
-    public function konfirmasiPembayaran($id_order){
+    public function konfirmasiPembayaran($id_order)
+    {
         $order = Pesanan::with(['customer', 'tipe_layanan'])->findOrFail($id_order);
         return view('worker.konfirmasiPembayaran', [
             "title" => "Konfirmasi pembayaran",
@@ -88,5 +91,4 @@ class WorkerOrderController extends Controller
         $order->save();
         return redirect()->route('worker-home');
     }
-
 }

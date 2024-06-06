@@ -64,3 +64,37 @@
         @include('partial.navigation-user')
     </div>
 @endsection
+
+@section('js')
+<script>
+const footbar = document.querySelector('#footbar');
+    let isScrolling;
+    window.addEventListener('scroll', () => {
+        clearTimeout(isScrolling);
+        footbar.style.display = 'none';
+
+        isScrolling = setTimeout(() => {
+            footbar.style.display = 'block';
+        }, 500); // Ganti angka ini untuk mengatur waktu delay setelah scrolling berhenti
+    });
+
+        // pop up when logout
+        document.getElementById('logout').addEventListener('click', function(event) {
+            event.preventDefault();
+            const hrefValue = event.currentTarget.href;
+            Swal.fire({
+                title: 'Logout?',
+                text: 'Apakah Anda yakin ingin logout?',
+                icon: 'warning',
+                showCancelButton: true,
+                dangerMode: true,
+                confirmButtonText: 'Ya!',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = hrefValue;
+                }
+            });
+        });
+</script>
+@endsection

@@ -12,8 +12,8 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     {{-- mapbox css --}}
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
 
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
 
     {{-- Sweetalert2 --}}
     <script src="{{ asset('assets/sweetalert2/sweetalert2.all.min.js') }}"></script>
@@ -56,7 +56,7 @@
 
     @yield('js')
     {{-- mapbox jsnya --}}
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
 </body>
 
 </html>

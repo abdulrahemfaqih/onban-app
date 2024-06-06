@@ -66,7 +66,7 @@ Route::middleware(['auth', 'is_customer'])->group(function () {
     // Route Order History
     Route::get("/user/orderHistory", [UserOrderHistoryController::class, "index"])->name('orderHistory');
     // Route Order
-    Route::get("/order/cancel/{id_order}", [CancelUserOrderController::class, "cancelOrder"])->name('cancel-order');
+    Route::get("/order/{id_order}/cancel", [CancelUserOrderController::class, "cancelOrder"])->name('cancel-order');
 
     Route::get("/order/create-order", [CreateUserOrderController::class, "createOrder"])->name("create-order");
     Route::get("/order/{id_order}/order-choose-vehicle", [ChooseVehicleController::class, "chooseVehicle"])->name('order-choose-vehicle');
@@ -74,11 +74,12 @@ Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::get("/order/{id_order}/konfirmasi_order", [KonfirmasiOrderController::class, "konfirmasiOrder"])->name('konfirmasi-order');
     Route::post("/order/update-location", [UpdateStatusOrderController::class, "updateStatusAndPosition"])->name('update-location');
 
-    Route::get("/order/{id}/find-worker", FindWorkerController::class)->name('worker-find');
-    Route::get("/user/vouchers", [UserVoucherController::class, "index"])->name('voucher');
+    Route::get("/order/{id_order}/find-worker", FindWorkerController::class)->name('worker-find');
 
+
+    Route::get("/user/vouchers", [UserVoucherController::class, "index"])->name('voucher');
     Route::get("/user/userChat", [UserChatController::class, "index"])->name('userChat');
-    Route::get("/order/payment-info", [PaymentInfoController::class, "index"])->name('payment-info');
+    Route::get("/order/{id_order}/payment-info", [PaymentInfoController::class, "index"])->name('payment-info');
 });
 
 // Route Admin
