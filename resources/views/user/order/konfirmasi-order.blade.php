@@ -28,7 +28,7 @@
                 <input type="hidden" name="longitude">
                 <input type="hidden" name="alamat">
                 <input type="hidden" name="status_order" value="Menunggu Pekerja">
-                <select class="w-full h-20 " id="voucher" name="voucher_id" >
+                <select class="w-full h-20 " id="voucher" name="voucher_id">
                     @foreach ($vouchers as $voucher)
                         <option value="{{ $voucher->id_voucher }}">{{ $voucher->nama_voucher }}</option>
                     @endforeach
@@ -36,7 +36,7 @@
             </div>
 
             {{-- buatkan inputan catatan order --}}
-            <textarea name="catatan" placeholder="catatan order"  class="w-3/4 h-20 rounded-md mb-4 md:w-1/2 md:h-40 lg:w-1/3"></textarea>
+            <textarea name="catatan" placeholder="catatan order" class="w-3/4 h-20 rounded-md mb-4 md:w-1/2 md:h-40 lg:w-1/3"></textarea>
 
             <div class="flex flex-col gap-4 md:gap-6 md:w-2/3 md:mx-auto lg:w-1/3">
                 <button id="confirmOrder"
@@ -46,12 +46,13 @@
             </div>
         </form>
     </div>
-
 @endsection
 @section('js')
     <script>
         document.getElementById('confirmOrder').addEventListener('click', async function(event) {
             event.preventDefault();
+            mapboxgl.accessToken =
+                'pk.eyJ1IjoiYWJkdWxyYWhlbWZhcWloIiwiYSI6ImNsd3l4Nm5pNjAxZzYyanNlaGp1eW41dmQifQ.fyJP2_k7LV4_3NCH9sAFWw';
             const hrefValue = event.currentTarget.href;
             const result = await Swal.fire({
                 title: 'Order Confirmation',
@@ -93,13 +94,15 @@
             }
         }
 
+
         async function getAlamat(lat, long) {
-            const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${long}`;
+            const url =
+                `https://api.mapbox.com/geocoding/v5/mapbox.places/${long},${lat}.json?access_token=${mapboxgl.accessToken}`;
             try {
                 const response = await fetch(url);
                 const data = await response.json();
-                if (data && data.display_name) {
-                    return data.display_name;
+                if (data && data.features && data.features.length > 0) {
+                    return data.features[0].place_name;
                 } else {
                     return 'No results found';
                 }
