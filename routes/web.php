@@ -139,7 +139,6 @@ Route::prefix('worker')->group(function () {
 // Route AppGuide
 Route::prefix('/help')->group(function () {
     Route::get('/user', [AppGuideController::class, 'showuser'])->name('user-help');
-    Route::get('/user/{category}', [AppGuideController::class, 'indexguidepanduan'])->name('panduan');
 
     Route::prefix('/worker')->group(function () {
         Route::get('/', [AppGuideController::class, 'showworker'])->name('worker-help');

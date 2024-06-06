@@ -36,9 +36,6 @@ class UserRegisterController extends Controller
             'role' => 'user',
         ]);
 
-        var_dump($login);
-        exit();
-
         Customer::create([
             'login_id' => $login->id,
             'nama' => $request->nama_lengkap,
