@@ -203,16 +203,20 @@
                         const latitude = position.coords.latitude;
                         const longitude = position.coords.longitude;
                         sendStatusOrder(true, latitude, longitude, idWorker)
+                        location.reload(true);
                     }, function(error) {
                         console.error("gagal mendapatkan lokasi", error);
                         sendStatusOrder(true, 0, 0, idWorker);
+                        location.reload(true);
                     });
                 } else {
                     alert('Geolocation tidak didukung pada browser anda');
                     sendStatusOrder(true, 0, 0, idWorker);
+                    location.reload(true);
                 }
             } else {
                 sendStatusOrder(false, 0, 0, idWorker);
+                location.reload(true);
             }
         });
 

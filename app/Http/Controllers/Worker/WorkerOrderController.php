@@ -63,15 +63,14 @@ class WorkerOrderController extends Controller
         $order->status_order = 'Diproses';
         $order->save();
 
-
+        $order = Pesanan::with(['customer', 'tipe_layanan', 'voucher', 'worker'])->findOrFail($id_order);
         return view('worker.order', [
             "title" => "Order",
             "order" => $order,
             "role" => session('userData')->role,
             "worker" => session('userData')->worker,
             "latWorker" => $latWorker,
-            "longWorker" => $longWorker
-
+            "longWorker" => $longWorker,
         ]);
     }
 
