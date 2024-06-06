@@ -8,7 +8,7 @@
             Histori Order </h1>
 
         {{-- list Histori --}}
-        <ol class="relative border-s border-gray-200 dark:border-gray-700">
+        <ol class="mx-auto border-s border-gray-200 dark:border-gray-700">
             @if ($orders->count() > 0)
                 @foreach ($orders as $order)
                     <li class="mb-8 ms-4">
