@@ -3,9 +3,9 @@
 
 @section('content')
     <div class="flex flex-col">
-        <div class="flex justify-end mb-4">
-            <a href="{{ route('tipe-layanan.create') }}"
-                class="inline-block px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-200">Tambah
+        <div class="flex justify-end mb-4 "  >
+            <a href="{{ route('tipe-layanan.create') }} "
+                class="bg-primary inline-block px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-200">Tambah
                 Tipe Layanan</a>
         </div>
 
@@ -44,14 +44,14 @@
                                     {{-- buatkan action  show, edit dan delete --}}
                                     <td class="py-4 px-6 border-b border-grey-light">
                                         <a href="{{ route('tipe-layanan.show', $tipeLayanan->id_tipe_layanan) }}"
-                                            class="text-green-600">Show</a>
+                                            class="text-black">Show</a>
                                         <a href="{{ route('tipe-layanan.edit', $tipeLayanan->id_tipe_layanan) }}"
-                                            class="text-blue-600">Edit</a>
+                                            class="text-black">Edit</a>
                                         <form action="{{ route('tipe-layanan.destroy', $tipeLayanan->id_tipe_layanan) }}"
                                             method="post" class="inline">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="text-red-600">Delete</button>
+                                            <button type="submit" class="text-black">Delete</button>
                                         </form>
                                     </td>
                                 </tr>

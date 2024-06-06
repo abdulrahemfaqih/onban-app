@@ -26,7 +26,7 @@
                     <img class="mt-2 rounded" src="{{ asset('storage/' . $customer->foto_profil) }}" alt="Foto Profil">
                 </div>
             </div>
-            <button class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+            <button class="mt-4 px-4 py-2 bg-primary text-white rounded hover:bg-blue-600 focus:outline-none ">
                 Lihat Statistik Order Pelanggan
             </button>
         </div>
