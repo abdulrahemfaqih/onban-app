@@ -49,6 +49,8 @@
         </div>
     @endif
 
+
+
     {{-- navigation bar --}}
     {{-- @include('partial.navigation-user') --}}
     <div class="mt-auto w-[95%] md:w-2/4 bg-[#FF802A] h-16  bottom-2 justify-center mx-auto my-auto content-center rounded-lg drop-shadow-lg lg:w-2/5 fixed translate-x-[-50%] left-1/2 right-1/2 mb-4 md:mb-8"
