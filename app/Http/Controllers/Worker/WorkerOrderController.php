@@ -48,7 +48,10 @@ class WorkerOrderController extends Controller
 
         // hitung total harga
         $hargaLayanan = $order->tipe_layanan->harga_tipe_layanan;
-        $totalHarga = $hargaLayanan + ($hargaPerKm * $jarak) * $voucher;
+        $totalHarga = ($hargaLayanan + $hargaPerKm * $jarak);
+
+        $potongan = $totalHarga * $voucher;
+        $totalHarga -= $potongan;
 
         // update order
         $order->total_harga = $totalHarga;
