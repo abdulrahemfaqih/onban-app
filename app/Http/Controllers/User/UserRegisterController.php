@@ -9,13 +9,15 @@ use Illuminate\Http\Request;
 
 class UserRegisterController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return view('register.register-user', [
             "title" => "Register"
         ]);
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $request->validate([
             'nama_lengkap' => 'required',
             'username' => 'required',
@@ -34,13 +36,15 @@ class UserRegisterController extends Controller
             'role' => 'user',
         ]);
 
+        var_dump($login);
+        exit();
+
         Customer::create([
             'login_id' => $login->id,
             'nama' => $request->nama_lengkap,
             'alamat' => $request->alamat,
             'no_hp' => $request->no_hp,
             'jenis_kelamin' => $request->jenis_kelamin,
-
         ]);
         return redirect(route('login'))->with('success', 'Register Berhasil! Silahkan Login!');
     }
