@@ -76,11 +76,13 @@
                                     </div>
                                     <div class="items-center text-base font-semibold text-gray-900 text-center">
                                         @if ($order->status_order == 'Menunggu Pekerja')
-                                            <p class="text-red-500">Menunggu</p>
+                                            <p class="text-yellow-500">Menunggu</p>
                                         @elseif ($order->status_order == 'Diproses')
                                             <p class="text-primary">{{ $order->status_order }}</p>
                                         @elseif ($order->status_order == 'Selesai')
                                             <p class="text-green-500">{{ $order->status_order }}</p>
+                                        @elseif ($order->status_order == 'Dibatalkan')
+                                            <p class="text-red-500">{{ $order->status_order }}</p>
                                         @endif
 
                                         @if ($order->status_order == 'Diproses' && isset($order_proses))
@@ -159,14 +161,20 @@
                                         <!-- Modal footer -->
                                         <div
                                             class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                            @if ($order->status_order != 'Selesai')
-                                                <a href="{{ route('worker-order', ['id_order' => $order->id_order]) }}"><button
-                                                        data-modal-hide="default-modal-{{ $order->id_order }}"
+                                            @if ($order->status_order == 'Selesai' || $order->status_order == 'Dibatalkan')
+                                                <button data-modal-hide="default-modal-{{ $order->id_order }}"
+                                                    type="button"
+                                                    class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-orange-300 hover:bg-orange-300 focus:z-10 focus:ring-4 focus:ring-gray-100 ">Kembali</button>
+                                            @else
+                                                <a href="{{ route('worker-order', ['id_order' => $order->id_order]) }}">
+                                                    <button data-modal-hide="default-modal-{{ $order->id_order }}"
                                                         type="button"
-                                                        class="text-white bg-primary hover:bg-primary-dark focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Terima</button></a>
+                                                        class="text-white bg-primary hover:bg-primary-dark focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Terima</button>
+                                                </a>
+                                                <button data-modal-hide="default-modal-{{ $order->id_order }}"
+                                                    type="button"
+                                                    class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-orange-300 hover:bg-orange-300 focus:z-10 focus:ring-4 focus:ring-gray-100 ">Kembali</button>
                                             @endif
-                                            <button data-modal-hide="default-modal-{{ $order->id_order }}" type="button"
-                                                class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-orange-300 hover:bg-orange-300 focus:z-10 focus:ring-4 focus:ring-gray-100 ">Kembali</button>
                                         </div>
                                     </div>
                                 </div>

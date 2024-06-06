@@ -29,6 +29,9 @@
                 <input type="hidden" name="alamat">
                 <input type="hidden" name="status_order" value="Menunggu Pekerja">
                 <select class="w-full h-20 " id="voucher" name="voucher_id">
+                    @if (count($vouchers) == 0)
+                        <option value="">No Voucher</option>
+                    @endif
                     @foreach ($vouchers as $voucher)
                         <option value="{{ $voucher->id_voucher }}">{{ $voucher->nama_voucher }}</option>
                     @endforeach
@@ -55,12 +58,12 @@
                 'pk.eyJ1IjoiYWJkdWxyYWhlbWZhcWloIiwiYSI6ImNsd3l4Nm5pNjAxZzYyanNlaGp1eW41dmQifQ.fyJP2_k7LV4_3NCH9sAFWw';
             const hrefValue = event.currentTarget.href;
             const result = await Swal.fire({
-                title: 'Order Confirmation',
-                text: 'Is your order correct?',
+                title: 'Konfirmasi Order',
+                text: 'Apakah Orderan anda sudah benar?',
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Yes!',
-                cancelButtonText: 'No',
+                confirmButtonText: 'Iya',
+                cancelButtonText: 'Belum',
                 cancelButtonColor: '#d33',
                 confirmButtonColor: '#3085d6'
             });

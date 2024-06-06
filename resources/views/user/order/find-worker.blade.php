@@ -1,6 +1,6 @@
 @extends('layouts.user-layout')
 @section('content')
-    <div class="w-full h-full py-20 flex flex-col flex-wrap">
+    <div class="w-full h-full pt-20 flex flex-col flex-wrap">
         <div class="w-[90%] absolute top-24 left-1/2 translate-x-[-50%] rounded-lg lg:w-2/3 md:w-3/4">
             <div id='map' style='width: 100%; height: 400px;'></div>
         </div>
@@ -35,10 +35,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div id="distance-container" class="mt-4 text-center">
-        <p>Jarak antara anda dengan worker: {{ $order->jarak }}  km</p>
-        <p>Harga: Rp {{ $order->total_harga }}</p>
     </div>
 @endsection
 
