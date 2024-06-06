@@ -37,6 +37,7 @@ use App\Http\Controllers\User\Order\CancelUserOrderController;
 use App\Http\Controllers\User\Order\CreateUserOrderController;
 use App\Http\Controllers\User\Order\KonfirmasiOrderController;
 use App\Http\Controllers\User\Order\UpdateStatusOrderController;
+use App\Http\Controllers\User\Order\UlasanController;
 use App\Http\Controllers\User\UserOrderHistoryController;
 
 // Route Session untuk ngecek user pertama kali masuk
@@ -67,6 +68,7 @@ Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::get("/user/orderHistory", [UserOrderHistoryController::class, "index"])->name('orderHistory');
     // Route Order
     Route::get("/order/{id_order}/cancel", [CancelUserOrderController::class, "cancelOrder"])->name('cancel-order');
+    Route::get("/user/order/ulasan", [UlasanController::class, "index"])->name('ulasan');
 
     Route::get("/order/create-order", [CreateUserOrderController::class, "createOrder"])->name("create-order");
     Route::get("/order/{id_order}/order-choose-vehicle", [ChooseVehicleController::class, "chooseVehicle"])->name('order-choose-vehicle');
@@ -75,6 +77,7 @@ Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::post("/order/update-location", [UpdateStatusOrderController::class, "updateStatusAndPosition"])->name('update-location');
 
     Route::get("/order/{id_order}/find-worker", FindWorkerController::class)->name('worker-find');
+    
 
 
     Route::get("/user/vouchers", [UserVoucherController::class, "index"])->name('voucher');

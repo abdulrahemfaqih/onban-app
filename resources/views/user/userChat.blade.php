@@ -1,3 +1,5 @@
-<div>
-    asdadasdasd<!-- Simplicity is the ultimate sophistication. - Leonardo da Vinci -->
-</div>
+@extends('layouts.user-layout')
+
+@section('content')
+
+@endsection

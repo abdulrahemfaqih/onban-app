@@ -5,9 +5,7 @@
             <div id='map' style='width: 100%; height: 400px;'></div>
         </div>
         <div class="w-full mx-auto h-56 bg-primary mt-56 rounded-md flex flex-col flex-wrap lg:w-2/3 md:w-3/4">
-
-            <div class="w-full h-3/4 flex lg:px-32">
-
+            <div class="w-full h-3/4  flex lg:px-32">
                 <div class="w-20 rounded-full h-20">
                     <img class="w-3/4 h-3/4 mx-auto mt-2 border-gray-300 border-2 rounded-full"
                         src="{{ asset('storage/' . $order->worker->foto_formal) }}" alt="">
@@ -35,6 +33,10 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div id="distance-container" class="mt-4 text-center">
+        <p>Jarak antara anda dengan worker: {{ $order->jarak }}  km</p>
+        <p>Harga: Rp {{ $order->total_harga }}</p>
     </div>
 @endsection
 
