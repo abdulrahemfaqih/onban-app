@@ -4,7 +4,7 @@
 @section('content')
     <div class="flex flex-col">
         <div class="flex justify-end mb-4">
-            <a class="text-blue-600 hover:underline px-4 py-2 bg-blue-100 rounded-md hover:bg-blue-200 transition duration-200"
+            <a class=" bg-primary inline-block px-4 py-2 text-white rounded-md hover:bg-blue-600 transition duration-200"
                 href="{{ route('vouchers.create') }}">Tambah Voucher</a>
         </div>
 
@@ -45,16 +45,16 @@
                                     <td class="py-4 px-6 border-b border-grey-light">{{ $voucher->tanggal_berakhir }}</td>
                                     {{-- buatkan action --}}
                                     <td class="py-4 px-6 border-b border-grey-light">
-                                        <div class="flex space-x-2">
+                                        <div class="flex space-x-3  ">
                                             <a href="{{ route('vouchers.edit', $voucher->kode_voucher) }}"
-                                                class="text-blue-600 hover:underline">Edit</a>
+                                                class="text-black hover:underline">Edit</a>
                                             <a href="{{ route('vouchers.show', $voucher->kode_voucher) }}"
-                                                class="text-green-600 hover:underline">Show</a>
+                                                class="text-black hover:underline">Show</a>
                                             <form action="{{ route('vouchers.destroy', $voucher->kode_voucher) }}"
                                                 method="post" class="inline">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="text-red-600 hover:underline">Delete</button>
+                                                <button type="submit" class="text-black hover:underline">Delete</button>
                                             </form>
                                         </div>
                                     </td>
