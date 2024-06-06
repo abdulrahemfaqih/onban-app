@@ -28,6 +28,7 @@ class CancelUserOrderController extends Controller
 
         $order->update([
             'status_order' => 'Dibatalkan',
+            'status_pembayaran' => 'Gagal'
         ]);
 
 

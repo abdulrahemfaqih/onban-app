@@ -106,10 +106,6 @@
                                 'line-width': 6
                             }
                         });
-                        // const distance = {{ $order->jarak }};
-                        // const totalPrice = {{ $order->total_harga }};
-                        // document.getElementById('distance').textContent = distance.toFixed(2);
-                        // document.getElementById('price').textContent = formatRupiah(totalPrice);
                     })
                     .catch(error => {
                         console.error('Error fetching directions:', error);
@@ -133,13 +129,6 @@
                 });
             });
         });
-
-        function formatRupiah(amount) {
-            return new Intl.NumberFormat('id-ID', {
-                style: 'currency',
-                currency: 'IDR'
-            }).format(amount);
-        }
     </script>
 
     <style>

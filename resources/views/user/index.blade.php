@@ -48,7 +48,13 @@
             </a>
         </div>
     @endif
+<<<<<<< HEAD
         <a href="{{route('ulasan')}}">ulasan</a>
+=======
+
+
+
+>>>>>>> abfb52063bdec9446894eb3cfd22ad7a52b71118
     {{-- navigation bar --}}
     @include('partial.navigation-user')
     

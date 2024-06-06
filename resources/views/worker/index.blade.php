@@ -4,7 +4,7 @@
     {{-- Worker Profile --}}
     <div class="flex">
         <img class="w-[100px] h-[100px] rounded-full border-4 border-primary"
-            src="{{ asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}" alt="">
+            src="{{ asset('storage/' . $worker->foto_formal) }}" alt="">
         <div class="pl-3">
             <p class="font-bold text-[1.1rem]">Selamat Datang Worker,</p>
             <p class="pb-2"> {{ $worker->nama }}! </p>
@@ -24,7 +24,7 @@
             <div class="flex flex-col justify-center">
                 <p class="text-lg text-gray-800 font-bold leading-6">Total Pendapatan</p>
                 <p class="text-xs">1 Mei - 30 Mei 2024</p>
-                <h1 class="text-2xl text-primary font-bold">Rp{{ round($orders->sum('total_harga')) }}</h1>
+                <h1 class="text-2xl text-primary font-bold">Rp{{ round($total_pendapatan) }}</h1>
             </div>
             <div class="">
                 <p class="text-center">Status Work</p>
@@ -203,16 +203,20 @@
                         const latitude = position.coords.latitude;
                         const longitude = position.coords.longitude;
                         sendStatusOrder(true, latitude, longitude, idWorker)
+                        location.reload(true);
                     }, function(error) {
                         console.error("gagal mendapatkan lokasi", error);
                         sendStatusOrder(true, 0, 0, idWorker);
+                        location.reload(true);
                     });
                 } else {
                     alert('Geolocation tidak didukung pada browser anda');
                     sendStatusOrder(true, 0, 0, idWorker);
+                    location.reload(true);
                 }
             } else {
                 sendStatusOrder(false, 0, 0, idWorker);
+                location.reload(true);
             }
         });
 
