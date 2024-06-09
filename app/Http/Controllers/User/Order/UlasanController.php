@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User\Order;
 
+use App\Models\Ulasan;
 use App\Models\Pesanan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -40,4 +41,6 @@ class UlasanController extends Controller
 
         return redirect()->route('orderHistory')->with('success', 'Ulasan berhasil ditambahkan!');
     }
+
+ 
 }

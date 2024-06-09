@@ -50,7 +50,8 @@
                         </div>
                         <div>
                             @if ($order->ulasan)
-                                <p>ulasan anda</p>
+                                <p>rating : {{ $order->ulasan->rating }}</p>
+                                <p>ulasan : {{ $order->ulasan->ulasan }}</p>
 
                             @else
                                 <p>tidak ada ulasan</p>

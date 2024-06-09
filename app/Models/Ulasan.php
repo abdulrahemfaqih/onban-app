@@ -21,4 +21,8 @@ class Ulasan extends Model
     public function order(){
         return $this->belongsTo(Pesanan::class, 'order_id');
     }
+
+    public function worker(){
+        return $this->belongsTo(Worker::class, 'worker_id');
+    }
 }
