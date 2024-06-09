@@ -1,6 +1,4 @@
 @extends('layouts.dashboard-layout')
-
-
 @section('content')
     <div class="flex flex-col">
         <div class="flex justify-end mb-4">
@@ -30,7 +28,7 @@
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
                                     Tanggal Akhir</th>
                                 <th
-                                    class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                                    class="py-4 px-28 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
                                     Action</th>
                             </tr>
                         </thead>
@@ -46,16 +44,22 @@
                                     {{-- buatkan action --}}
                                     <td class="py-4 px-6 border-b border-grey-light">
                                         <div class="flex space-x-3  ">
-                                            <a href="{{ route('vouchers.edit', $voucher->kode_voucher) }}"
-                                                class="text-black hover:underline">Edit</a>
-                                            <a href="{{ route('vouchers.show', $voucher->kode_voucher) }}"
-                                                class="text-black hover:underline">Show</a>
-                                            <form action="{{ route('vouchers.destroy', $voucher->kode_voucher) }}"
+                                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                                <a href="{{ route('vouchers.show', $voucher->kode_voucher) }}"
+                                                class="text-white ">Show</a>
+                                            </button>
+                                            <button class="bg-[#d3d514] hover:bg-[#b9bb12] text-white font-bold py-2 px-4 rounded">
+                                                <a href="{{ route('vouchers.edit', $voucher->kode_voucher) }}"
+                                                class="text-white h">Edit</a>
+                                            </button>
+
+                                                 <form action="{{ route('vouchers.destroy', $voucher->kode_voucher) }}"
                                                 method="post" class="inline">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="text-black hover:underline">Delete</button>
+                                                <button type="submit" class="bg-[#e21717] hover:bg-[#bc1212] text-white font-bold py-2 px-4 rounded">Delete</button>
                                             </form>
+
                                         </div>
                                     </td>
 
