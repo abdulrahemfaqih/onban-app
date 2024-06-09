@@ -5,11 +5,9 @@
     <div class="flex flex-col">
         <div class="flex justify-end mb-4 "  >
             <a href="{{ route('tipe-layanan.create') }} "
-                class="bg-primary inline-block px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-200">Tambah
+                class="bg-primary inline-block px-4 py-2  text-white rounded-md hover:bg-blue-600 transition duration-200">Tambah
                 Tipe Layanan</a>
         </div>
-
-
         <div class="w-full mt-2">
             @if (session()->has('success'))
                 @include('partial.alert-success', ['message' => session()->get('success')])
