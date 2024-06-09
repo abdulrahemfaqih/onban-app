@@ -40,7 +40,7 @@
                     @enderror
                 </div>
                 <div class="mt-2">
-                    <label class="block text-sm text-gray-600" for="deskripsi">Nama Voucher</label>
+                    <label class="block text-sm text-gray-600" for="deskripsi">Deskripsi Voucher</label>
                     <input class="w-full px-5 py-5 text-gray-700 bg-gray-50 rounded" id="deskripsi" name="deskripsi"
                         type="text" placeholder="Deskripsi" value="{{ $voucher->deskripsi }}" />
                     @error('deskripsi')
