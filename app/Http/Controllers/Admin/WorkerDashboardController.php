@@ -10,27 +10,73 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class WorkerDashboardController extends Controller
 {
     /**
      * Handle the incoming request.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $semuaWorker = DB::table('worker')->paginate(7);
+        $query = DB::table('worker');
+
+        if ($request->has('status_verifikasi')) {
+            $status_verifikasi = $request->input('status_verifikasi');
+            if ($status_verifikasi != 'all') {
+                $query->where('status_verifikasi', $status_verifikasi);
+            }
+        }
+
+        if ($request->has('status_menerima_order')) {
+            $status_menerima_order = $request->input('status_menerima_order');
+            if ($status_menerima_order != 'all') {
+                $query->where('status_menerima_order', $status_menerima_order);
+            }
+        }
+
+        $semuaWorker = $query->paginate(7);
+
         return view('dashboard.worker.index', [
             "title" => "Dashboard Worker",
             "semuaWorker" => $semuaWorker,
         ]);
     }
 
-    public function show(string $id)
+
+    public function show(Request $request, string $id)
     {
         $worker = Worker::findOrFail($id);
+
+        $selectedYear = $request->input('year', Carbon::now()->year);
+
+        $orders = DB::table('order')
+        ->select(DB::raw('COUNT(*) as count'), DB::raw('MONTH(created_at) as month'))
+        ->where('worker_id', $id)
+        ->whereYear('created_at', $selectedYear)
+            ->groupBy(DB::raw('MONTH(created_at)'))
+            ->get()
+            ->pluck('count', 'month')
+            ->toArray();
+
+        $months = [];
+        for ($i = 1; $i <= 12; $i++) {
+            $months[$i] = $orders[$i] ?? 0;
+        }
+
+        $years = DB::table('order')
+        ->select(DB::raw('DISTINCT YEAR(created_at) as year'))
+        ->where('worker_id', $id)
+        ->orderBy('year', 'desc')
+            ->pluck('year')
+            ->toArray();
+
         return view('dashboard.worker.show', [
             "title" => "Detail Worker",
             "worker" => $worker,
+            "orders" => $months,
+            "years" => $years,
+            "selectedYear" => $selectedYear
         ]);
     }
 
@@ -70,6 +116,5 @@ class WorkerDashboardController extends Controller
             Mail::to($email_worker)->send(new beritahuVerifikasi($emailData));
             return redirect()->route('admin-workers')->with('success', 'Status verifikasi worker berhasil diubah!');
         }
-        
     }
 }
