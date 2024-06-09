@@ -25,7 +25,7 @@ class FindWorkerController extends Controller
         $pricePerKm = 3000;
 
         if ($order->status_order == 'Selesai' && $order->status_pembayaran == 'Berhasil') {
-            return redirect()->route('user-home');
+            return redirect()->route('ulasan', $order->id_order);
         }
         return view('user.order.find-worker', [
             "title" => "Cari Pekerja",
