@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="flex flex-col min-h-screen">
+        
         <h1
             class="text-center text-2xl font-bold text-white mx-auto absolute w-3/4 h-40 top-28 z-20 left-1/2 right-1/2 translate-x-[-50%]">
             Histori Order </h1>

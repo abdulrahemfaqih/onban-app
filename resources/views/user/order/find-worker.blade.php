@@ -14,7 +14,7 @@
                     <p class="font-bold pl-2 pt-2">Profile Worker</p>
                     <p class="pl-2 pt-2">Nama: {{ $order->worker->nama }}</p>
                     <p class="pl-2 pt-2">No Telepon: {{ $order->worker->no_hp }}</p>
-                    <p class="pl-2 pt-2">Rating: 4.5/5</p>
+                    <p class="pl-2 pt-2">Rating: {{ $rataRataRating }}/5</p>
                 </div>
             </div>
             <div class="w-full flex justify-between py-2.5 lg:px-32 px-2 h-1/4">
@@ -48,7 +48,7 @@
                 'pk.eyJ1IjoiYWJkdWxyYWhlbWZhcWloIiwiYSI6ImNsd3l4Nm5pNjAxZzYyanNlaGp1eW41dmQifQ.fyJP2_k7LV4_3NCH9sAFWw';
             var map = new mapboxgl.Map({
                 container: 'map',
-                style: 'mapbox://styles/mapbox/streets-v11',
+                style: 'mapbox://styles/mapbox/streets-v12',
                 center: [{{ $userLocation['longitude'] }}, {{ $userLocation['latitude'] }}],
                 zoom: 12
             });
@@ -61,7 +61,7 @@
 
                 var workerMarkerElement = document.createElement('div');
                 workerMarkerElement.innerHTML =
-                    '<div class="marker"><div class="label">Worker</div><div class="icon" style="background-color: red;"></div></div>';
+                    '<div class="marker"><div class="label">Work    er</div><div class="icon" style="background-color: red;"></div></div>';
                 workerMarkerElement.className = 'marker-container';
 
                 new mapboxgl.Marker(userMarkerElement)
