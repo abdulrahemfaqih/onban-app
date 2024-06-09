@@ -38,7 +38,7 @@
                                 Jenis Kelamin
                             </th>
                             <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-white text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-16 py-3 border-b-2 border-gray-200 bg-white text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                 Action
                             </th>
                         </tr>
@@ -91,10 +91,15 @@
                                     <p class="text-gray-900 whitespace-no-wrap">Laki-Laki</p>
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                     <a href="{{ route('admin-workers-show', $worker->id_worker) }}"
                                         class="mr-2">Detail</a>
+                                    </button>
+                                    <button class=" bg-[#e21717] hover:bg-[#bc1212] text-white font-bold py-2 px-4 rounded">
                                     <a onclick="return confirm('yakin ingin dihapus ? ')"
                                         href="{{ route('admin-workers-delete', $worker->id_worker) }}">Hapus</a>
+                                    </button>
+                                    
                                 </td>
                             </tr>
                         @endforeach
