@@ -65,10 +65,11 @@ Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::get("/user/profile", [UserProfileController::class, "index"])->name('profile');
     Route::post("/user/profile", [UserProfileController::class, "updateProfile"])->name('udpate-profile');
     // Route Order History
-    Route::get("/user/orderHistory", [UserOrderHistoryController::class, "index"])->name('orderHistory');
+    Route::get("orderHistory", [UserOrderHistoryController::class, "index"])->name('orderHistory');
     // Route Order
     Route::get("/order/{id_order}/cancel", [CancelUserOrderController::class, "cancelOrder"])->name('cancel-order');
-    Route::get("/user/order/ulasan", [UlasanController::class, "index"])->name('ulasan');
+    Route::get("/order/{id_order}/ulasan", [UlasanController::class, "index"])->name('ulasan');
+    Route::post("/order/{id_order}/ulasan", [UlasanController::class, "store"])->name('ulasan-store');
 
     Route::get("/order/create-order", [CreateUserOrderController::class, "createOrder"])->name("create-order");
     Route::get("/order/{id_order}/order-choose-vehicle", [ChooseVehicleController::class, "chooseVehicle"])->name('order-choose-vehicle');
@@ -77,7 +78,7 @@ Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::post("/order/update-location", [UpdateStatusOrderController::class, "updateStatusAndPosition"])->name('update-location');
 
     Route::get("/order/{id_order}/find-worker", FindWorkerController::class)->name('worker-find');
-    
+
 
 
     Route::get("/user/vouchers", [UserVoucherController::class, "index"])->name('voucher');

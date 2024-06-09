@@ -10,7 +10,7 @@ class UserOrderHistoryController extends Controller
 {
     public function index()
     {
-        $orders = Pesanan::with('customer', 'worker', 'tipe_layanan', 'voucher')
+        $orders = Pesanan::with('customer', 'worker', 'tipe_layanan', 'voucher', 'ulasan')
         ->where('customer_id', auth()->user()->customer->id_customer)
         ->where('status_pembayaran', 'Berhasil')
         ->where('status_order', 'selesai')
