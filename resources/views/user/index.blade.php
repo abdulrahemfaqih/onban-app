@@ -5,9 +5,8 @@
         <div id="foto_profile"
             class="mx-auto absolute w-40 h-40 top-28 left-1/2 overflow-hidden right-1/2 translate-x-[-50%] border-white border-4 rounded-full">
             <img src="{{ isset($customer->foto_profil) ? asset('storage/' . $customer->foto_profil) : asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}"
-                alt="" class="object-cover border-white border-b-2">
-            <img src="{{ isset($customer->foto_profil) ? asset('storage/' . $customer->foto_profil) : asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}"
-                alt="" class="object-cover border-white border-b-2">
+                alt="" class="object-cover w-full h-full border-white border-b-2">
+            
         </div>
         <div class="flex justify-center ">
             <h1 class="text-black text-4xl flex mt-20 "> {{ $nama }}</h1>
@@ -48,13 +47,9 @@
             </a>
         </div>
     @endif
-<<<<<<< HEAD
-        <a href="{{route('ulasan')}}">ulasan</a>
-=======
 
+        {{-- <a href="{{route('ulasan')}}">ulasan</a> --}}
 
-
->>>>>>> abfb52063bdec9446894eb3cfd22ad7a52b71118
     {{-- navigation bar --}}
     @include('partial.navigation-user')
     

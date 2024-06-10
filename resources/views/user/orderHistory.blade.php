@@ -66,17 +66,17 @@
 @endsection
 
 @section('js')
-<script>
-const footbar = document.querySelector('#footbar');
-    let isScrolling;
-    window.addEventListener('scroll', () => {
-        clearTimeout(isScrolling);
-        footbar.style.display = 'none';
+    <script>
+        const footbar = document.querySelector('#footbar');
+        let isScrolling;
+        window.addEventListener('scroll', () => {
+            clearTimeout(isScrolling);
+            footbar.style.display = 'none';
 
-        isScrolling = setTimeout(() => {
-            footbar.style.display = 'block';
-        }, 500); // Ganti angka ini untuk mengatur waktu delay setelah scrolling berhenti
-    });
+            isScrolling = setTimeout(() => {
+                footbar.style.display = 'block';
+            }, 500); // Ganti angka ini untuk mengatur waktu delay setelah scrolling berhenti
+        });
 
         // pop up when logout
         document.getElementById('logout').addEventListener('click', function(event) {
@@ -96,5 +96,5 @@ const footbar = document.querySelector('#footbar');
                 }
             });
         });
-</script>
+    </script>
 @endsection
