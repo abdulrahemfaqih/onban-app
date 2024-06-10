@@ -14,8 +14,8 @@
         </div>
         <div class="flex flex-col rounded-lg mx-auto w-3/4 h-80 backdrop-blur-lg bg-sky-100 opacity-85">
             <p class="text-black pt-2 mx-auto text-lg font-bold">{{ $order->customer->nama }}</p>
-            <div class="flex gap-10 mx-auto pt-2 px-2 mt-4">
-               <div class="flex flex-col text-gray-500 flex-wrap text-sm gap-2 ">
+            <div class="flex gap-6 mx-auto pt-2 px-2 ">
+               <div class="flex flex-col text-gray-500 flex-wrap text-sm gap-1">
                 <p>Jenis Kendaraan</p>
                 @if (isset($order->voucher_id))
                     <p>Potongan Voucher</p>
@@ -24,7 +24,7 @@
                 <p>Jarak</p>
                 <p>Harga per KM</p>
                </div>
-                <div class="flex flex-col text-black flex-wrap text-sm gap-2 ">
+                <div class="flex flex-col text-black flex-wrap text-sm gap-1 ">
                     <p>{{ $order->tipe_layanan->nama_tipe_layanan }}</p>
                     <p>{{ $order->voucher->potongan_harga *100 }}%</p>
                     <p>Rp {{ $order->tipe_layanan->harga_tipe_layanan }}</p>
@@ -48,6 +48,7 @@
                 </div>
             </div>
         </div>
+        <a class="mx-auto bg-primary p-2  mt-5 rounded-md" href="{{ route('worker-find', $order->id_order) }}">kembali</a>
     </div>
 
 

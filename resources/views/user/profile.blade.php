@@ -10,7 +10,7 @@
 
     <div
         class="absolute top-28 lg:top-28 rounded-full md:top-48 mt-2 mx-auto w-32 h-32 left-1/2 right-1/2 translate-x-[-50%] z-40 overflow-hidden content-center">
-        <img src="{{ isset($profile->foto_profil) ? asset('storage/' . $profile->foto_profil) : asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}" alt="profile" class="object-cover">
+        <img src="{{ isset($profile->foto_profil) ? asset('storage/' . $profile->foto_profil) : asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}" alt="profile" class="object-cover w-full h-full">
 
     </div>
 

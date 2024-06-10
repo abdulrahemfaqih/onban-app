@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use Carbon\Carbon;
 use App\Models\Voucher;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -11,6 +12,7 @@ class UserVoucherController extends Controller
 {
     public function index()
     {
+        $customer = Customer::where('id_customer', session('userData')->customer->id_customer)->first();
         $sekarang = Carbon::now()->startOfDay();
         $vouchers = Voucher::where('tanggal_berakhir', '>=', $sekarang->toDateString())->get();
 
@@ -27,6 +29,7 @@ class UserVoucherController extends Controller
             "title" => "Voucher",
             "nama" => session('userData')->customer->nama,
             "role" => session('userData')->role,
+            'customer' => $customer,
             "vouchers" => $vouchers,
         ]);
     }
