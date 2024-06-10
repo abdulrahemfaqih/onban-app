@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User\Order;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pesanan;
+use App\Models\Ulasan;
 use Illuminate\Http\Request;
 
 
@@ -12,6 +13,10 @@ class FindWorkerController extends Controller
     public function __invoke($id_order)
     {
         $order = Pesanan::with(['worker', 'customer', 'tipe_layanan'])->where('id_order', $id_order)->first();
+        $ulasan = Ulasan::where('worker_id', $order->worker->id_worker)->get();
+        $totalRating = $ulasan->sum('rating');
+        $jumlahRating = $ulasan->count();
+        $rataRataRating = $totalRating > 0 ? $totalRating / $jumlahRating : 0;
         $userLocation = [
             'latitude' => $order->latitude,
             'longitude' => $order->longitude
@@ -25,7 +30,7 @@ class FindWorkerController extends Controller
         $pricePerKm = 3000;
 
         if ($order->status_order == 'Selesai' && $order->status_pembayaran == 'Berhasil') {
-            return redirect()->route('user-home');
+            return redirect()->route('ulasan', $order->id_order);
         }
         return view('user.order.find-worker', [
             "title" => "Cari Pekerja",
@@ -36,6 +41,7 @@ class FindWorkerController extends Controller
             'workerLocation' => $workerLocation,
             'pricePerKm' => $pricePerKm,
             'harga_tipe_layanan' => $order->tipe_layanan->harga_tipe_layanan,
+            'rataRataRating' => $rataRataRating
         ]);
     }
 }

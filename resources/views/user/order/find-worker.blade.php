@@ -1,20 +1,32 @@
 @extends('layouts.user-layout')
 @section('content')
+    <div id="distance-container" class="mt-4 w-full text-center absolute z-40 top-14 left-1/2 translate-x-[-50%]">
+        <div class="mx-auto gap-3 flex w-3/4 lg:w-1/3 md:w-2/3">
+            <p class="bg-white w-1/2 mx-auto rounded-md py-2 text-secondary">Jarak worker: <b>{{ $order->jarak }}km</b>
+            </p>
+            <p class="bg-white w-1/2 mx-auto rounded-md py-2 text-secondary">Harga: <b>Rp {{ $order->total_harga }}</b>
+            </p>
+        </div>
+
+    </div>
     <div class="w-full h-full pt-20 flex flex-col flex-wrap">
         <div class="w-[90%] absolute top-24 left-1/2 translate-x-[-50%] rounded-lg lg:w-2/3 md:w-3/4">
             <div id='map' style='width: 100%; height: 400px;'></div>
         </div>
+
         <div class="w-full mx-auto h-56 bg-primary mt-56 rounded-md flex flex-col flex-wrap lg:w-2/3 md:w-3/4">
+
+
             <div class="w-full h-3/4  flex lg:px-32">
-                <div class="w-20 rounded-full h-20">
-                    <img class="w-3/4 h-3/4 mx-auto mt-2 border-gray-300 border-2 rounded-full"
+            <div class="w-20 ml-2 rounded-full h-14 md:h-20 flex justify-center overflow-hidden content-center">
+                    <img class="w-full h-full object-cover mx-auto mt-2 border-gray-300 rounded-full"
                         src="{{ asset('storage/' . $order->worker->foto_formal) }}" alt="">
                 </div>
                 <div class="text-white flex-wrap">
                     <p class="font-bold pl-2 pt-2">Profile Worker</p>
                     <p class="pl-2 pt-2">Nama: {{ $order->worker->nama }}</p>
                     <p class="pl-2 pt-2">No Telepon: {{ $order->worker->no_hp }}</p>
-                    <p class="pl-2 pt-2">Rating: 4.5/5</p>
+                    <p class="pl-2 pt-2">Rating: {{ $rataRataRating }}/5</p>
                 </div>
             </div>
             <div class="w-full flex justify-between py-2.5 lg:px-32 px-2 h-1/4">
@@ -34,10 +46,6 @@
             </div>
         </div>
     </div>
-    <div id="distance-container" class="mt-4 text-center">
-        <p>Jarak antara anda dengan worker: {{ $order->jarak }}  km</p>
-        <p>Harga: Rp {{ $order->total_harga }}</p>
-    </div>
 @endsection
 
 @section('js')
@@ -48,7 +56,7 @@
                 'pk.eyJ1IjoiYWJkdWxyYWhlbWZhcWloIiwiYSI6ImNsd3l4Nm5pNjAxZzYyanNlaGp1eW41dmQifQ.fyJP2_k7LV4_3NCH9sAFWw';
             var map = new mapboxgl.Map({
                 container: 'map',
-                style: 'mapbox://styles/mapbox/streets-v11',
+                style: 'mapbox://styles/mapbox/streets-v12',
                 center: [{{ $userLocation['longitude'] }}, {{ $userLocation['latitude'] }}],
                 zoom: 12
             });
@@ -61,7 +69,7 @@
 
                 var workerMarkerElement = document.createElement('div');
                 workerMarkerElement.innerHTML =
-                    '<div class="marker"><div class="label">Worker</div><div class="icon" style="background-color: red;"></div></div>';
+                    '<div class="marker"><div class="label">Work    er</div><div class="icon" style="background-color: red;"></div></div>';
                 workerMarkerElement.className = 'marker-container';
 
                 new mapboxgl.Marker(userMarkerElement)

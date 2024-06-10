@@ -48,11 +48,9 @@
         </div>
     @endif
 
-        {{-- <a href="{{route('ulasan')}}">ulasan</a> --}}
-
     {{-- navigation bar --}}
     @include('partial.navigation-user')
-    
+
 
 @endsection
 @section('js')

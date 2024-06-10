@@ -50,19 +50,16 @@
                 </div>
             </div>
             <div>
-                {{-- buatkan form update status verifikasi worker --}}
+                {{-- Form for updating worker's verification status --}}
                 <form action="{{ route('admin-workers-update-status', $worker->id_worker) }}" method="POST">
                     @csrf
                     @method('PATCH')
                     <div class="mt-4">
-                        <label for="status_verifikasi" class="block text-sm font-medium text-gray-700">Status
-                            Verifikasi</label>
+                        <label for="status_verifikasi" class="block text-sm font-medium text-gray-700">Status Verifikasi</label>
                         <select id="status_verifikasi" name="status_verifikasi" autocomplete="status_verifikasi"
                             class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                            <option value="0" {{ $worker->status_verifikasi == 0 ? 'selected' : '' }}>Belum
-                                Terverifikasi</option>
-                            <option value="1" {{ $worker->status_verifikasi == 1 ? 'selected' : '' }}>Terverifikasi
-                            </option>
+                            <option value="0" {{ $worker->status_verifikasi == 0 ? 'selected' : '' }}>Belum Terverifikasi</option>
+                            <option value="1" {{ $worker->status_verifikasi == 1 ? 'selected' : '' }}>Terverifikasi</option>
                         </select>
                     </div>
                     <div class="mt-4">
@@ -71,7 +68,50 @@
                             Update Status Verifikasi
                         </button>
                     </div>
+                </form>
             </div>
+            @if ($worker->status_verifikasi)
+                <div class="mt-8">
+                    <h2 class="text-lg font-semibold">Order Frequency per Month</h2>
+                    {{-- Year filter --}}
+                    <form id="yearFilterForm" class="mb-4">
+                        <label for="year" class="block text-sm font-medium text-gray-700">Select Year</label>
+                        <select id="year" name="year" class="mt-1 block w-1/3 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" onchange="document.getElementById('yearFilterForm').submit()">
+                            @foreach ($years as $year)
+                                <option value="{{ $year }}" {{ $year == $selectedYear ? 'selected' : '' }}>{{ $year }}</option>
+                            @endforeach
+                        </select>
+                    </form>
+                    <canvas id="ordersChart" width="400" height="200"></canvas>
+                </div>
+            @endif
         </div>
     </div>
+
+    @if ($worker->status_verifikasi)
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            var ctx = document.getElementById('ordersChart').getContext('2d');
+            var ordersChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                    datasets: [{
+                        label: 'Orders per Month',
+                        data: {!! json_encode(array_values($orders)) !!},
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+    @endif
 @endsection
