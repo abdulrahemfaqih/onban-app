@@ -107,7 +107,8 @@
                 options: {
                     scales: {
                         y: {
-                            beginAtZero: true
+                            beginAtZero: true,
+
                         }
                     }
                 }

@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
+use function PHPUnit\Framework\returnSelf;
+
 class WorkerDashboardController extends Controller
 {
     /**
@@ -63,7 +65,8 @@ class WorkerDashboardController extends Controller
         for ($i = 1; $i <= 12; $i++) {
             $months[$i] = $orders[$i] ?? 0;
         }
-
+        // return $months;
+    
         $years = DB::table('order')
         ->select(DB::raw('DISTINCT YEAR(created_at) as year'))
         ->where('worker_id', $id)
@@ -77,6 +80,7 @@ class WorkerDashboardController extends Controller
             "orders" => $months,
             "years" => $years,
             "selectedYear" => $selectedYear
+
         ]);
     }
 
