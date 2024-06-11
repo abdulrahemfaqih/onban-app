@@ -9,6 +9,10 @@ class Ulasan extends Model
 {
     use HasFactory;
     protected $table = 'ulasan';
+    protected $primaryKey = 'id_ulasan';
+    protected $guarded = [
+        "id_ulasan"
+    ];
 
     public function customer(){
         return $this->belongsTo(Customer::class, 'customer_id');
@@ -16,5 +20,9 @@ class Ulasan extends Model
 
     public function order(){
         return $this->belongsTo(Pesanan::class, 'order_id');
+    }
+
+    public function worker(){
+        return $this->belongsTo(Worker::class, 'worker_id');
     }
 }

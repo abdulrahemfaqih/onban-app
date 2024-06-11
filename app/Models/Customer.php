@@ -22,11 +22,13 @@ class Customer extends Model
         'jenis_kelamin'
     ];
 
+
     public function user() {
         return $this->belongsTo(User::class, 'login_id');
     }
 
-    public function order() {
+    public function order()
+    {
         return $this->hasMany(Pesanan::class, 'customer_id');
     }
 }

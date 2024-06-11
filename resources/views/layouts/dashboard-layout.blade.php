@@ -18,7 +18,7 @@
         }
 
         .bg-sidebar {
-            background: #3d68ff;
+            background: #f77f00;
         }
 
         .cta-btn {
@@ -26,19 +26,22 @@
         }
 
         .upgrade-btn {
-            background: #1947ee;
+            background: #f77f00;
+            color: #3d68ff;
         }
 
         .upgrade-btn:hover {
-            background: #0038fd;
+            background: #f77f00;
+            color: #3d68ff;
         }
 
         .active-nav-link {
-            background: #1947ee;
+            background: #f4f3f3;
+            color: #F67E00;
         }
 
         .nav-item:hover {
-            background: #1947ee;
+            background: #f4f3f3;
         }
 
         .account-link:hover {

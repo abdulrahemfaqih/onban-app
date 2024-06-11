@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Voucher;
+use App\Models\Customer;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class VoucherController extends Controller
 {
@@ -25,9 +26,10 @@ class VoucherController extends Controller
      */
     public function index()
     {
-
-        return view('dashboard.voucher.index', [
+        $customer = Customer::where('id_customer', session('userData')->customer->id_customer)->first();
+        return view('das.voucher.index', [
             "title" => "Dashboard Voucher",
+            "customer" => $customer,
             "vouchers" => Voucher::all()
         ]);
     }

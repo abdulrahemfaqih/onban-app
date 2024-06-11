@@ -37,6 +37,7 @@ use App\Http\Controllers\User\Order\CancelUserOrderController;
 use App\Http\Controllers\User\Order\CreateUserOrderController;
 use App\Http\Controllers\User\Order\KonfirmasiOrderController;
 use App\Http\Controllers\User\Order\UpdateStatusOrderController;
+use App\Http\Controllers\User\Order\UlasanController;
 use App\Http\Controllers\User\UserOrderHistoryController;
 
 // Route Session untuk ngecek user pertama kali masuk
@@ -64,9 +65,11 @@ Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::get("/user/profile", [UserProfileController::class, "index"])->name('profile');
     Route::post("/user/profile", [UserProfileController::class, "updateProfile"])->name('udpate-profile');
     // Route Order History
-    Route::get("/user/orderHistory", [UserOrderHistoryController::class, "index"])->name('orderHistory');
+    Route::get("orderHistory", [UserOrderHistoryController::class, "index"])->name('orderHistory');
     // Route Order
-    Route::get("/order/cancel/{id_order}", [CancelUserOrderController::class, "cancelOrder"])->name('cancel-order');
+    Route::get("/order/{id_order}/cancel", [CancelUserOrderController::class, "cancelOrder"])->name('cancel-order');
+    Route::get("/order/{id_order}/ulasan", [UlasanController::class, "index"])->name('ulasan');
+    Route::post("/order/{id_order}/ulasan", [UlasanController::class, "store"])->name('ulasan-store');
 
     Route::get("/order/create-order", [CreateUserOrderController::class, "createOrder"])->name("create-order");
     Route::get("/order/{id_order}/order-choose-vehicle", [ChooseVehicleController::class, "chooseVehicle"])->name('order-choose-vehicle');
@@ -74,11 +77,13 @@ Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::get("/order/{id_order}/konfirmasi_order", [KonfirmasiOrderController::class, "konfirmasiOrder"])->name('konfirmasi-order');
     Route::post("/order/update-location", [UpdateStatusOrderController::class, "updateStatusAndPosition"])->name('update-location');
 
-    Route::get("/order/{id}/find-worker", FindWorkerController::class)->name('worker-find');
-    Route::get("/user/vouchers", [UserVoucherController::class, "index"])->name('voucher');
+    Route::get("/order/{id_order}/find-worker", FindWorkerController::class)->name('worker-find');
 
+
+
+    Route::get("/user/vouchers", [UserVoucherController::class, "index"])->name('voucher');
     Route::get("/user/userChat", [UserChatController::class, "index"])->name('userChat');
-    Route::get("/order/payment-info", [PaymentInfoController::class, "index"])->name('payment-info');
+    Route::get("/order/{id_order}/payment-info", [PaymentInfoController::class, "index"])->name('payment-info');
 });
 
 // Route Admin
@@ -141,11 +146,11 @@ Route::prefix('worker')->group(function () {
 
 // Route AppGuide
 Route::prefix('/help')->group(function () {
-    Route::get('/user', [AppGuideController::class, 'indexuser'])->name('user-help');
+    Route::get('/user', [AppGuideController::class, 'showuser'])->name('user-help');
     Route::get('/user/{category}', [AppGuideController::class, 'indexguidepanduan'])->name('panduan');
 
     Route::prefix('/worker')->group(function () {
-        Route::get('/', [AppGuideController::class, 'indexworker'])->name('worker-help');
+        Route::get('/', [AppGuideController::class, 'showworker'])->name('worker-help');
     });
 });
 

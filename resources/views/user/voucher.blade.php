@@ -34,13 +34,13 @@
                         </div>
                     </div>
                 @endforeach
-                {{-- navigation bar --}}
-
+                
                 
             </div>
         </div>
         
     </div>
+    {{-- navigation bar --}}
     @include('partial.navigation-user')
 @endsection
 
