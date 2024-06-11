@@ -70,14 +70,16 @@
                                     <p class="text-sm font-sm text-gray-900 truncate">
                                         {{ $order->alamat }} ({{ $order->jarak }}km)
                                     </p>
-                                    <p class="text-sm font-sm font-bold text-gray-900 truncate">
-                                        Total: Rp{{ $order->total_harga }}
-                                    </p>
+                                    @if ($order->status_order != 'Menunggu Pekerja')
+                                        <p class="text-sm font-sm font-bold text-gray-900 truncate">
+                                            Total: Rp{{ $order->total_harga }}
+                                        </p>
+                                    @endif
                                 </div>
                                 <div class="items-center text-base font-semibold text-gray-900 text-center">
                                     @if ($order->status_order == 'Menunggu Pekerja')
                                         <p class="text-red-500">Menunggu</p>
-                                    @elseif ($order->status_order == 'Diproses')
+                                    @elseif ($order->status_order == 'Diproses')2
                                         <p class="text-primary">{{ $order->status_order }}</p>
                                     @elseif ($order->status_order == 'Selesai')
                                         <p class="text-green-500">{{ $order->status_order }}</p>

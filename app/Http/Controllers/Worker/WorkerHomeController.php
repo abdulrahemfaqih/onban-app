@@ -13,7 +13,7 @@ class WorkerHomeController extends Controller
      */
     public function __invoke()
     {
-        $orders = Pesanan::with(['customer', 'tipe_layanan'])->get();
+        $orders = Pesanan::with(['customer', 'tipe_layanan'])->orderBy('status_order', 'ASC')->get();
         $id_worker = session('userData')->worker->id_worker;
         $status_menerima_order = Worker::findOrFail($id_worker)->status_menerima_order  ;
         return view('worker.index', [
