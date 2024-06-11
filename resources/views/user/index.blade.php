@@ -9,7 +9,7 @@
             
         </div>
         <div class="flex justify-center ">
-            <h1 class="text-black text-4xl flex mt-20 "> {{ $nama }}</h1>
+            <h1 class="text-black text-4xl text-center flex mt-20 "> {{ $nama }}</h1>
         </div>
         <div class="flex justify-center text-center text-base md:text-xl">
             <p>Tambal Ban Online: Perbaikan Ban Langsung ke Lokasi Anda!</p>
