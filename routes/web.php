@@ -135,6 +135,7 @@ Route::prefix('worker')->group(function () {
         Route::get("/home", WorkerHomeController::class)->name('worker-home');
         Route::get("/home/pendapatan", WorkerPendapatanController::class)->name('worker-pendapatan');
         Route::get("/home/ulasan", WorkerUlasanController::class)->name('worker-ulasan');
+        Route::get("/order/detail/{id_order}", [WorkerHomeController::class, 'orderDetail'])->name('worker-order-detail');
         Route::get("/order/{id_order}", [WorkerOrderController::class, 'ambilOrder'])->name('worker-order');
         Route::get("/order/{id_order}/pembayaran", [WorkerOrderController::class, 'konfirmasiPembayaran'])->name('worker-order-konfirmasi-pembayaran');
         Route::get("/order/{id_order}/selesai", [WorkerOrderController::class, 'finishedOrder'])->name('worker-order-selesai');
