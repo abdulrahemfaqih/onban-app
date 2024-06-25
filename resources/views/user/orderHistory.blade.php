@@ -8,10 +8,10 @@
             Histori Order </h1>
 
         {{-- list Histori --}}
-       
+
             @if ($orders->count() > 0)
                 @foreach ($orders as $order)
-                    
+
                     {{--   --}}
                     <div class="w-full bg-white rounded-lg 800 h-full flex flex-col text-sm shadow-lg" x-data="{ open: false }">
                         <div x-on:click="open = ! open" class="lg:gap-52 justify-between w-full flex md:gap-36 md:p-4">
@@ -30,7 +30,7 @@
                                 <p class=" font-semibold">{{ $order->jarak }}</p>
                                 <p class=" font-semibold">Rp 3000</p>
                                 <p class=" font-semibold">{{ $order->total_harga }}</p>
-                                
+
                             </div>
                         </div>
                         <div x-show="open" x-transition class="flex flex-col mx-auto p-2 md:ml-2">
@@ -49,9 +49,9 @@
                             <div class="flex flex-col p-2">
                                 <p class="font-semibold">Tidak ada ulasam</p>
                                 <a href="{{ route('ulasan', $order->id_order) }}">mohon beri ulasan</a>
-                                
+
                             </div>
-                               
+
                             @endif
                         </div>
                     </div>
@@ -62,9 +62,9 @@
                 </div>
             @endif
 
-        
 
-        
+
+
 
 
         {{-- Navigation Bar --}}
