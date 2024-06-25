@@ -26,10 +26,8 @@ class VoucherController extends Controller
      */
     public function index()
     {
-        // $customer = Customer::where('id_customer', session('userData')->customer->id_customer)->first();
-        return view('dashboard.voucher.index', [
+        return view('dasboard.voucher.index', [
             "title" => "Dashboard Voucher",
-            // "customer" => $customer,
             "vouchers" => Voucher::all()
         ]);
     }

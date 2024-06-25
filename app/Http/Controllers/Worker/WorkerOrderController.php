@@ -9,8 +9,7 @@ use GuzzleHttp\Client;
 
 class WorkerOrderController extends Controller
 {
-
-    private function getMapboxDistance($latWorker, $longWorker, $latCustomer, $longCustomer)
+    public function getMapboxDistance($latWorker, $longWorker, $latCustomer, $longCustomer)
     {
         $accessToken = env('MAPBOX_ACCESS_TOKEN');
         $client = new Client();

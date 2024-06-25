@@ -27,7 +27,7 @@
 <body data-worker-id="{{ $worker->id_worker }}" class="font-poppins">
     <div class="flex flex-col justify-between min-h-screen">
         @include('partial.header-worker')
-        <div class="container px-7 space-y-6">
+        <div class="container px-6 space-y-6">
             @yield('content')
         </div>
         @include('partial.footer-worker')

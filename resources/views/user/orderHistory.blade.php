@@ -1,7 +1,7 @@
 @extends('layouts.user-layout')
 
 @section('content')
-    <div class="flex flex-col min-h-screen">
+    <div class="flex flex-col ">
 
         <h1
             class="text-center text-2xl font-bold text-white mx-auto absolute w-3/4 h-40 top-28 z-20 left-1/2 right-1/2 translate-x-[-50%]">
@@ -24,8 +24,7 @@
                                 <p class="font-semibold text-primary">harga/km</p>
                                 <p class="font-semibold text-primary ">total</p>
                             </div>
-                            <div class="flex p-2  pr-2 text-secondary lg:ml-20 flex-col gap-2">
-                                <p class=" mt-2 text-secondary">{{ $order->worker->nama }}</p>
+                            <div>
                                 <p class=" font-semibold">{{ $order->total_harga }}</p>
                                 <p class=" font-semibold">{{ $order->jarak }}</p>
                                 <p class=" font-semibold">Rp 3000</p>
@@ -33,15 +32,15 @@
 
                             </div>
                         </div>
-                        <div x-show="open" x-transition class="flex flex-col mx-auto p-2 md:ml-2">
-                            <div class="flex flex-col p-2">
+                        <div class="flex flex-col p-2 w-3/4 justify-center text-center mx-auto">
+                            <div class="flex justify-between">
                                 @if ($order->ulasan)
-                                <p class="font-semibold">Rating</p>
-                                <p class="text-gray-500">
-                                    {{ $order->ulasan->rating }}
-                                </p>
+                                    <p class="font-semibold text-secondary">Rating</p>
+                                    <p class="text-primary">
+                                        {{ $order->ulasan->rating }}/5
+                                    </p>
                             </div>
-                            <div class="flex flex-col p-2">
+                            <div class="flex flex-col ">
                                 <p class="font-semibold">Ulasan</p>
                                 <p class="text-gray-500">{{ $order->ulasan->ulasan }}</p>
                             </div>
@@ -67,8 +66,8 @@
 
 
 
-        {{-- Navigation Bar --}}
-        @include('partial.navigation-user')
+    {{-- Navigation Bar --}}
+    @include('partial.navigation-user')
     </div>
 @endsection
 
