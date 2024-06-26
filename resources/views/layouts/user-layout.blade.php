@@ -9,8 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     {{-- link kan ke build yang sudah di public --}}
-    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app-DmjHsupI.css') }}">
-    <link rel="stylesheet" href="{{ asset('build/assets/app-C9pRe2dr.js') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('build/assets/app-COrwD6bZ.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app-C9pRe2dr.js') }}">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     {{-- ulasan --}}
@@ -45,7 +45,7 @@
 
 
     {{-- Select2 --}}
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <title>{{ $title }} | onban</title>

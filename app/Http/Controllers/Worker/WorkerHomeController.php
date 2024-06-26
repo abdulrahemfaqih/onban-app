@@ -84,8 +84,10 @@ class WorkerHomeController extends Controller
         // hitung harga
         foreach($orders as $order){
             if($order->status_order == "Menunggu Pekerja"){
-                $order->total_harga = 1;
-                $order->total_harga = $this->hitungHarga($order->id_order);
+                if ($status_menerima_order == 1){
+                    $order->total_harga = 1;
+                    $order->total_harga = $this->hitungHarga($order->id_order);
+                }
             }
         }
 
