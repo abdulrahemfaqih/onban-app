@@ -32,18 +32,25 @@
                     <p><b class="text-primary">Onban</b> layanan tambal ban online </p>
                 </div>
             </div>
-            <div class="w-screen h-16 flex content-center justify-center gap-8 p-2 mt-36 md:mt-80 ">
-                <div class="">
-                    <a href="{{ route('login') }}"
-                        class="text-primary w-40 border-2 border-primary py-4 px-10 hover:py-5 hover:px-11 rounded-md">
-                        Login</a>
+            <div class="w-screen h-16 flex flex-col content-center justify-center gap-8 p-2 mt-36 md:mt-80 ">
+                <div class="flex content-center justify-center gap-4">
+                    <div class="">
+                        <a href="{{ route('login') }}"
+                            class="text-primary w-40 border-2 border-primary py-4 px-10 hover:py-5 hover:px-11 rounded-md">
+                            Login</a>
+                    </div>
+                    <div class="">
+                        <a href="{{ route('register') }}"
+                            class=" text-white w-40 bg-primary py-5 px-6 hover:py-6 hover:px-7 rounded-md"> Get Started </a>
+                    </div>
                 </div>
-                <div class="">
-                    <a href="{{ route('register') }}"
-                        class=" text-white w-40 bg-primary py-5 px-6 hover:py-6 hover:px-7 rounded-md"> Get Started </a>
+                <div class="text-center text-slate-600">
+                    <p class="text-xs mt-2"><a href="{{ route('user-help') }} ">Panduan penggunaan
+                            aplikasi</a></p>
                 </div>
             </div>
         </div>
+       
     </div>
 
 </body>
