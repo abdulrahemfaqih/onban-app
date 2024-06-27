@@ -44,7 +44,7 @@
                             class=" text-white w-40 bg-primary py-5 px-6 hover:py-6 hover:px-7 rounded-md"> Get Started </a>
                     </div>
                 </div>
-                <div class="text-center text-slate-600">
+                <div class="text-center text-home">
                     <p class="text-xs mt-2"><a href="{{ route('user-help') }} ">Panduan penggunaan
                             aplikasi</a></p>
                 </div>
