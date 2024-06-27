@@ -31,8 +31,8 @@ class WorkerRegisterController extends Controller
             'email' => 'required|email|unique:login,email',
             'password' => 'required',
             'konfirmasi_password' => 'required|same:password',
-            "foto_ktp" => "required|file|max:2048",
-            "foto_formal" => "required|file|max:2048",
+            "foto_ktp" => "required|file|max:2048|mimes:jpg,jpeg,png",
+            "foto_formal" => "required|file|max:2048|mimes:jpg,jpeg,png",
             "jenis_kelamin" => "required"
         ]);
 

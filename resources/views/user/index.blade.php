@@ -6,7 +6,7 @@
             class="mx-auto absolute w-40 h-40 top-28 left-1/2 overflow-hidden right-1/2 translate-x-[-50%] border-white border-4 rounded-full">
             <img src="{{ isset($customer->foto_profil) ? asset('storage/' . $customer->foto_profil) : asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}"
                 alt="" class="object-cover w-full h-full border-white border-b-2">
-            
+
         </div>
         <div class="flex justify-center ">
             <h1 class="text-black text-4xl text-center flex mt-20 "> {{ $nama }}</h1>
@@ -28,10 +28,11 @@
     @if ($pendingOrder)
         @if ($pendingOrder->status_order === 'Menunggu Pekerja')
             <div class="flex justify-center w-full h-16  md:h-24 lg:h-24 mt-10 ">
-                <a href="" id="waiting"
+                <a href="{{ route('cancel-order', $pendingOrder->id_order) }}" id="waiting"
                     class="bg-[#FF802A] text-center lg:w-1/4 xl:w-1/4 md:w-1/2 text-sm w-3/4 h-full justify-center flex flex-col px-10 py-6 rounded-lg text-white xl:border-none lg:border-none border-none hover:bg-[#f78000d6] shadow-lg md:text-xl"><b>Mohon
                         tunggu worker untuk mengambil orderan Anda.</b>
                 </a>
+
             </div>
         @elseif ($pendingOrder->status_order === 'Diproses')
             <div class="flex justify-center w-full h-16  md:h-24 lg:h-24 mt-10 ">
@@ -97,7 +98,7 @@
             const hrefValue = event.currentTarget.href;
             Swal.fire({
                 title: 'menunggu',
-                text: 'menunggu worker untuk mengambil orderan anda',
+                text: 'mohon worker untuk mengambil orderan anda, jika orderan anda sudah di ambil tombolnya akan berubah',
                 icon: 'info',
                 showCancelButton: true,
                 dangerMode: true,
