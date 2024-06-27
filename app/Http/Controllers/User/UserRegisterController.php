@@ -19,12 +19,13 @@ class UserRegisterController extends Controller
         $request->validate([
             'nama_lengkap' => 'required',
             'username' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:login,email',
             'password' => 'required',
             'konfirmasi_password' => 'required|same:password',
             'alamat' => 'required',
             'no_hp' => 'required',
             'jenis_kelamin' => 'required',
+            
         ]);
 
         $login = User::create([

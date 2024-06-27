@@ -26,7 +26,7 @@ class VoucherController extends Controller
      */
     public function index()
     {
-        return view('dasboard.voucher.index', [
+        return view('dashboard.voucher.index', [
             "title" => "Dashboard Voucher",
             "vouchers" => Voucher::all()
         ]);

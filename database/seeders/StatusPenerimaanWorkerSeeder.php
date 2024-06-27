@@ -15,7 +15,7 @@ class StatusPenerimaanWorkerSeeder extends Seeder
     {
         StatusPenerimaanWorker::create([
             'status_penerimaan' => true,
-            'keterangan' => 'ditutup sampai 23 Mei 2024',
+            'keterangan' => 'ditubuka sampai 30 Mei 2024',
         ]);
     }
 }

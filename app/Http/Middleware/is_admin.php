@@ -16,7 +16,7 @@ class is_admin
     public function handle(Request $request, Closure $next): Response
     {
         if (session('userData') == null) {
-            return redirect()->route('login-admin');
+        return redirect()->route('login-admin');
         }
         if (session('userData')->role != 'admin') {
             return abort(403);

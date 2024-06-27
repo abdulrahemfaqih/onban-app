@@ -10,6 +10,8 @@
 
     <!-- Tailwind -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app-COrwD6bZ.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app-C9pRe2dr.js') }}"> --}}
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
 

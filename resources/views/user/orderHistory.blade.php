@@ -12,18 +12,24 @@
         @if ($orders->count() > 0)
             @foreach ($orders as $order)
                 {{--   --}}
-                <div class="w-full bg-white rounded-lg 800 h-full flex flex-col text-sm shadow-lg md:w-3/4 mx-auto" x-data="{ open: false }">
+                <div class="w-full bg-white rounded-lg 800 h-full flex flex-col text-sm shadow-lg md:w-3/4 mx-auto"
+                    x-data="{ open: false }">
                     <div x-on:click="open = ! open" class="lg:gap-52 justify-between w-full flex md:gap-36 md:p-4">
                         <div class="flex flex-col w-1/3 p-2 gap-2">
-                            <p class="text-red-500 opacity-55 mt-2"><time
-                                    class=" text-sm font-normal leading-none text-gray-400 dark:text-gray-500">February
-                                    2022</time></p>
-                            <p class="text-primary">See Detail</p>
-                           
+                            @php
+                                \Carbon\Carbon::setLocale('id');
+                            @endphp
+                            <p class="text-red-500 opacity-55 mt-2">
+                                <time class="text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                                    {{ \Carbon\Carbon::parse($order->created_at)->translatedFormat('l, j F Y H:i') }}
+                                </time>
+                            </p>
+                            <p class="text-primary">Lihat Detail</p>
+
                         </div>
                         <div class="flex p-2  pr-2 text-secondary lg:ml-20 flex-col gap-2">
                             <p class=" mt-2 text-secondary">{{ $order->worker->nama }}</p>
-                          
+
                         </div>
                     </div>
                     <div x-show="open" x-transition class="flex flex-col md:w-3/4 mx-auto justify-center p-2 w-full">
@@ -57,7 +63,8 @@
                     @else
                         <div class="flex flex-col p-2 mx-auto text-center md:w-2/3 ">
                             <p class="font-semibold">Tidak ada ulasan</p>
-                            <a class="bg-primary rounded-md text-white p-1 mt-2" href="{{ route('ulasan', $order->id_order) }}">beri ulasan</a>
+                            <a class="bg-primary rounded-md text-white p-1 mt-2"
+                                href="{{ route('ulasan', $order->id_order) }}">beri ulasan</a>
 
                         </div>
             @endif
@@ -87,12 +94,10 @@
         window.addEventListener('scroll', () => {
             clearTimeout(isScrolling);
             footbar.style.display = 'none';
-
             isScrolling = setTimeout(() => {
                 footbar.style.display = 'block';
             }, 500); // Ganti angka ini untuk mengatur waktu delay setelah scrolling berhenti
         });
-
         // pop up when logout
         document.getElementById('logout').addEventListener('click', function(event) {
             event.preventDefault();

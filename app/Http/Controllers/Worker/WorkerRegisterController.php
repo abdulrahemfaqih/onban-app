@@ -28,11 +28,11 @@ class WorkerRegisterController extends Controller
             'username' => 'required|unique:login,username',
             'alamat' => 'required',
             'no_hp' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:login,email',
             'password' => 'required',
             'konfirmasi_password' => 'required|same:password',
-            "foto_ktp" => "required|file|max:2048",
-            "foto_formal" => "required|file|max:2048",
+            "foto_ktp" => "required|file|max:2048|mimes:jpg,jpeg,png",
+            "foto_formal" => "required|file|max:2048|mimes:jpg,jpeg,png",
             "jenis_kelamin" => "required"
         ]);
 
