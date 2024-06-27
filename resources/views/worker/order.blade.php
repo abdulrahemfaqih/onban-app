@@ -1,29 +1,19 @@
 @extends('layouts.worker-order-layout')
 @section('content')
     <p class="text-center font-bold text-gray-900 text-2xl">Order</p>
-    <div id="map" style='width: 100%; height: 400px;'></div>
-    <div class="flex space-x-2">
+    <div id="map" style='width: 100%; height: 400px;' class=""></div>
+    <div class="flex justify-between gap-x-3">
         <p class="border border-gray-300 p-3 rounded-lg shadow">{{ $order->jarak }} KM</p>
         <p class="border border-gray-300 p-3 rounded-lg shadow">Estimasi Biaya: {{ round($order->total_harga) }} </p>
     </div>
-    <p class="border border-gray-300 p-3 rounded-lg shadow">Lokasi User: {{ $order->alamat }}, {{ $order->catatan }}</p>
-@endsection
-
-@section('footer')
-    <footer class="sticky bottom-0">
-        <div class="max-w-screen mx-7 m-5 text-center bg-secondary rounded-lg shadow">
-            <div class="flex justify-between items-center text-white text-sm h-[4rem] px-4 space-x-3">
-                <a href=""
-                    class="text-sm font-bold text-secondary bg-white hover:bg-gray-400 p-3 rounded-lg w-[50%]">
-                    <p>Chat Customer</p>
-                </a>
-                <a href="{{ route('worker-order-konfirmasi-pembayaran', ['id_order' => $order->id_order]) }}"
-                    class="border border-white text-base font-bold hover:bg-gray-900 p-3 rounded-lg w-[50%]">
-                    <p>Selesai</p>
-                </a>
-            </div>
-        </div>
-    </footer>
+    <p class="border border-gray-300 p-3 rounded-lg shadow">
+        <b>Lokasi User:</b> {{ $order->alamat }}<br>
+        <b>Catatan:</b> {{ $order->catatan }}
+    </p>
+    
+    <a href="{{ route('worker-order-konfirmasi-pembayaran', ['id_order' => $order->id_order]) }}" class="flex justify-center">
+        <button class="border border-gray-300 w-screen p-3 mb-3 bg-secondary text-white rounded-lg shadow hover:bg-blue-900">Selesaikan Pesanan</button>
+    </a>
 @endsection
 
 @section('js')

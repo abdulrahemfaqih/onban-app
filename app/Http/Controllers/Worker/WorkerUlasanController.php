@@ -12,9 +12,14 @@ class WorkerUlasanController extends Controller
     {
         $id_worker = session('userData')->worker->id_worker;
         $ulasan_all = Ulasan::with(['customer'])->where('worker_id', $id_worker)->get();
+
+        // Calculate the average rating
+        $average_rating = $ulasan_all->avg('rating');
+
         return view('worker.ulasan', [
             "title" => "Ulasan",
             "ulasan" => $ulasan_all,
+            "average_rating" => $average_rating,
             "role" => session('userData')->role,
             "worker" => session('userData')->worker
         ]);
