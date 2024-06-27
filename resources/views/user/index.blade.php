@@ -16,24 +16,26 @@
         </div>
 
 
-        <div class="lg:w-1/3 mx-auto absolute  translate-x-[-50%] left-1/2 right-1/2 w-3/4 lg:top-[55%] top-[65%] ">
+        <div class="lg:w-1/3 lg:mx-auto ">
             @if (session()->has('success'))
                 @include('partial.alert-success', ['message' => session()->get('success')])
             @endif
         </div>
+       
+        
 
     </div>
     @if ($pendingOrder)
         @if ($pendingOrder->status_order === 'Menunggu Pekerja')
-            <div class="flex justify-center w-full h-16 md:h-24 lg:h-24 mt-14 ">
-                <a href=""
+            <div class="flex justify-center w-full h-16  md:h-24 lg:h-24 mt-10 ">
+                <a href="{{ route('cancel-order', $pendingOrder->id_order) }}" id="waiting"
                     class="bg-[#FF802A] text-center lg:w-1/4 xl:w-1/4 md:w-1/2 text-sm w-3/4 h-full justify-center flex flex-col px-10 py-6 rounded-lg text-white xl:border-none lg:border-none border-none hover:bg-[#f78000d6] shadow-lg md:text-xl"><b>Mohon
                         tunggu worker untuk mengambil orderan Anda.</b>
                 </a>
 
             </div>
         @elseif ($pendingOrder->status_order === 'Diproses')
-            <div class="flex justify-center w-full h-16  md:h-24 lg:h-24 mt-14 ">
+            <div class="flex justify-center w-full h-16  md:h-24 lg:h-24 mt-10 ">
                 <a href="{{ route('worker-find', $pendingOrder->id_order) }}"
                     class="bg-primary text-center rounded-md h-full lg:w-1/4 xl:w-1/4 md:w-1/2 w-3/4 content-center text-white"><b>Orderan
                         Anda sedang diproses oleh worker</b>
@@ -41,7 +43,7 @@
             </div>
         @endif
     @else
-        <div class="flex justify-center w-full h-16 md:h-20 lg:h-14 mt-14 ">
+        <div class="flex justify-center w-full h-16 md:h-20 lg:h-14 mt-10 ">
             <a href="{{ route('create-order') }}"
                 class="bg-[#FF802A] text-center lg:w-1/4 xl:w-1/4 md:w-1/2 w-3/4 h-full justify-center flex flex-col px-10 py-6 rounded-lg text-white xl:border-none lg:border-none border-none hover:bg-[#f78000d6] shadow-lg md:text-xl"><b>Pesan
                     Sekarang</b>
@@ -83,6 +85,25 @@
                 dangerMode: true,
                 confirmButtonText: 'Ya!',
                 cancelButtonText: 'Tidak'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = hrefValue;
+                }
+            });
+        });
+
+        // pop up when click waiting for worker accept
+        document.getElementById('waiting').addEventListener('click', function(event) {
+            event.preventDefault();
+            const hrefValue = event.currentTarget.href;
+            Swal.fire({
+                title: 'menunggu',
+                text: 'mohon worker untuk mengambil orderan anda, jika orderan anda sudah di ambil tombolnya akan berubah',
+                icon: 'info',
+                showCancelButton: true,
+                dangerMode: true,
+                confirmButtonText: 'batalkan order',
+                cancelButtonText: 'oke'
             }).then((result) => {
                 if (result.isConfirmed) {
                     window.location.href = hrefValue;
