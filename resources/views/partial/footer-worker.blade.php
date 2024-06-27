@@ -1,5 +1,5 @@
 <footer class="sticky bottom-0 ">
-    <div class="max-w-full mx-7 m-5 text-center bg-primary rounded-lg shadow">
+    <div class="max-w-screen mx-3 m-5 text-center bg-primary rounded-lg shadow">
         <div class="flex justify-between items-center text-white text-sm">
             <a href="{{ route('worker-home') }}"
                 class="hover:bg-primary-dark p-3 pl-5 rounded-lg {{ request()->routeIs('worker-home') ? 'font-bold text-orange-900' : '' }}">

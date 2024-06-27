@@ -9,7 +9,6 @@
             <p class="font-bold text-[1.1rem]">Selamat Datang Worker,</p>
             <p class="pb-2"> {{ $worker->nama }}! </p>
             <hr class="border-1 border-gray-500 py-1">
-            <p class="text-sm">Telah Bekerja selama 74 Tahun</p>
             <p class="text-sm">Sebagai Worker OnBan</p>
         </div>
     </div>
@@ -23,8 +22,7 @@
         <div class="flex justify-between">
             <div class="flex flex-col justify-center">
                 <p class="text-lg text-gray-800 font-bold leading-6">Total Pendapatan</p>
-                <p class="text-xs">1 Mei - 30 Mei 2024</p>
-                <h1 class="text-2xl text-primary font-bold">Rp{{ round($total_pendapatan) }}</h1>
+                <h1 class="text-2xl text-primary font-bold">Rp{{ number_format(round($total_pendapatan), 0, ',', '.') }}</h1>
             </div>
             <div class="">
                 <p class="text-center">Status Work</p>
@@ -81,7 +79,7 @@
 
                                             @endif --}}
                                             {{ $worker -> la }}
-                                            Total: Rp{{ round($order->total_harga) }}
+                                            Total: Rp{{ number_format(round($order->total_harga), 0, ',', '.') }}
                                         </p>
                                     </div>
                                     <div class="items-center text-base font-semibold text-gray-900 text-center">
