@@ -8,7 +8,7 @@
     <link rel="icon" href="{{ asset('assets/images/workerLogo.svg') }}" type="image/png">
     <title>{{ $title }} | onbann</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app-DmjHsupI.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app-COrwD6bZ.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/app-C9pRe2dr.js') }}"> --}}
     <style>
         * {

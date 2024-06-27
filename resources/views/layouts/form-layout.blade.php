@@ -9,8 +9,8 @@
     <title>{{ $title }} | onban</title>
 
 	@vite(['resources/css/app.css', 'resources/js/app.js'])
-    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app-DmjHsupI.css') }}">
-    <link rel="stylesheet" href="{{ asset('build/assets/app-C9pRe2dr.js') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app-COrwD6bZ.css') }}"> --}}
+
     <style>
         * {
             /* border: 1px solid black; */
@@ -31,6 +31,7 @@
         @yield('content')
         <p class="text-xs text-gray-600 text-center mt-5 justify-end">&copy; 2024 OnBan-Corporation</p>
     </div>
+    <script src="{{ asset('build/assets/app-C9pRe2dr.js') }}"></script>
 </body>
 
 </html>
