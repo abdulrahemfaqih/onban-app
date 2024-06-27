@@ -17,7 +17,7 @@ class SessionController extends Controller
                 return redirect()->route('worker-home');
             }
         } else {
-            return redirect()->route('login');
+            return redirect()->route('landing-page');
         }
     }
 }

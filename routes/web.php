@@ -4,45 +4,47 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\SessionControllerAdmin;
 use App\Http\Controllers\Admin\VoucherController;
 use App\Http\Controllers\User\UserChatController;
-use App\Http\Controllers\User\UserLoginController;
 
+use App\Http\Controllers\User\UserLoginController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\User\UserProfileController;
 use App\Http\Controllers\User\UserVoucherController;
 use App\Http\Controllers\Admin\TipeLayananController;
+use App\Http\Controllers\AppGuide\AppGuideController;
+
+use App\Http\Controllers\User\Order\UlasanController;
 use App\Http\Controllers\User\UserRegisterController;
 use App\Http\Controllers\Worker\WorkerHomeController;
-
 use App\Http\Controllers\Worker\WorkerLoginController;
 use App\Http\Controllers\Worker\WorkerOrderController;
 use App\Http\Controllers\Admin\AdminRegisterController;
 use App\Http\Controllers\Admin\UserDashboardController;
 use App\Http\Controllers\Worker\WorkerUlasanController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\OrderDashboardController;
 use App\Http\Controllers\Worker\WorkerUpdateStatusOrder;
 use App\Http\Controllers\Admin\WorkerDashboardController;
 use App\Http\Controllers\User\Order\FindWorkerController;
+use App\Http\Controllers\User\UserOrderHistoryController;
 use App\Http\Controllers\Worker\WorkerRegisterController;
 use App\Http\Controllers\Admin\MetodePembayaranController;
-use App\Http\Controllers\Admin\OrderDashboardController;
 use App\Http\Controllers\User\Order\PaymentInfoController;
 use App\Http\Controllers\Worker\WorkerPendapatanController;
 use App\Http\Controllers\Admin\StatusTerimaWorkerController;
-use App\Http\Controllers\AppGuide\AppGuideController;
 use App\Http\Controllers\User\Order\ChooseVehicleController;
 use App\Http\Controllers\User\Order\CancelUserOrderController;
 use App\Http\Controllers\User\Order\CreateUserOrderController;
 use App\Http\Controllers\User\Order\KonfirmasiOrderController;
 use App\Http\Controllers\User\Order\UpdateStatusOrderController;
-use App\Http\Controllers\User\Order\UlasanController;
-use App\Http\Controllers\User\UserOrderHistoryController;
 
 // Route Session untuk ngecek user pertama kali masuk
 Route::get('/', SessionController::class);
 
+Route::get('/', [LandingPageController::class, 'index'])->name('landing-page')->middleware('guest');
 // Route Login Customer
 Route::prefix('login')->group(function () {
     // Route Login
