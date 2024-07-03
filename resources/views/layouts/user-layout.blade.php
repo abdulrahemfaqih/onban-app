@@ -7,10 +7,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{ asset('assets/images/logoUser.svg') }}" type="image/png">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
     {{-- link kan ke build yang sudah di public --}}
-    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app-COrwD6bZ.css') }}">
-    <link rel="stylesheet" href="{{ asset('build/assets/app-C9pRe2dr.js') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('build/assets/app-BPxFg8fj.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app-C9pRe2dr.js') }}"> --}}
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     {{-- ulasan --}}
@@ -61,6 +61,7 @@
 
     @yield('js')
     {{-- mapbox jsnya --}}
+    {{-- <script src="{{ asset('build/assets/app-C9pRe2dr.js') }}"></script> --}}
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
 </body>
 

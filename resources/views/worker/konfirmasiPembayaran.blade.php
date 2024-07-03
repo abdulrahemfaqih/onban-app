@@ -28,12 +28,32 @@
 
 @section('footer')
     <footer class="sticky bottom-0">
-        <div class="max-w-screen mx-7 m-5 text-center bg-secondary rounded-lg shadow">
+        <div class="max-w-screen mx-7 m-5 text-center rounded-lg shadow">
             <div class="flex justify-center items-center text-white text-sm h-[4rem] px-4">
-                <a href="{{ route('worker-order-selesai', ['id_order' => $order->id_order]) }}" class="border border-white text-base font-bold hover:bg-gray-900 p-3 rounded-lg w-full">
+                <a id="payment-done" href="{{ route('worker-order-selesai', ['id_order' => $order->id_order]) }}" class="border border-white bg-secondary text-base font-bold hover:bg-gray-900 p-3 rounded-lg w-full">
                     <p>Selesai</p>
                 </a>
             </div>
         </div>
     </footer>
+    <script>
+        // pop up when payment-done
+        document.getElementById('payment-done').addEventListener('click', function(event) {
+            event.preventDefault();
+            const hrefValue = event.currentTarget.href;
+            Swal.fire({
+                title: 'pembayaran selesai?',
+                text: 'Apakah Anda yakin customer sudah membayar?',
+                icon: 'warning',
+                showCancelButton: true,
+                dangerMode: true,
+                confirmButtonText: 'Ya!',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = hrefValue;
+                }
+            });
+        });
+    </script>
 @endsection

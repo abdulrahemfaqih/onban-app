@@ -34,7 +34,6 @@
                     <a href="{{ route('cancel-order', $order->id_order) }}" id="cancel-link"
                         class="my-auto hover:text-gray-200 hover:border-gray-200 border-white border-2 mx-auto text-white p-1 rounded-md">Batalkan</a>
                 </div>
-                
                 <div class="flex justify-center content-center h-1/2">
                     <a href="{{ route('payment-info', $order->id_order) }}"
                         class="my-auto hover:text-orange-400 hover:bg-gray-200 bg-white hover:border-orange-400 border-primary border-2 mx-auto text-primary p-1 rounded-md">Pembayaran</a>

@@ -14,10 +14,14 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 
+        {{-- Sweetalert2 --}}
+    <script src="{{ asset('assets/sweetalert2/sweetalert2.all.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('assets/sweetalert2/sweetalert2.css') }}">
+
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app-COrwD6bZ.css') }}">
-    <link rel="stylesheet" href="{{ asset('build/assets/app-C9pRe2dr.js') }}"> --}}
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+    <link rel="stylesheet" href="{{ asset('build/assets/app-BPxFg8fj.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app-C9pRe2dr.js') }}"> --}}
     {{-- css mapbox --}}
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
     <title>{{ $title }} | onbann</title>
@@ -33,6 +37,7 @@
         <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
         @yield('js')
     </div>
+    <script src="{{ asset('build/assets/app-C9pRe2dr.js') }}"></script>
 </body>
 
 </html>

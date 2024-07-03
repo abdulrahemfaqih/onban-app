@@ -16,10 +16,30 @@
                 <i class="fi fi-rr-comment-alt text-lg"></i>
                 <p>Ulasan</p>
             </a>
-            <a href="{{ route('logout') }}" class="hover:bg-primary-dark p-3 pr-5 rounded-lg ">
+            <a href="{{ route('logout') }}" id="logout" class="hover:bg-primary-dark p-3 pr-5 rounded-lg ">
                 <i class="fi fi-rr-exit"></i>
                 <p>Logout</p>
             </a>
         </div>
     </div>
 </footer>
+<script>
+      // pop up when logout
+        document.getElementById('logout').addEventListener('click', function(event) {
+            event.preventDefault();
+            const hrefValue = event.currentTarget.href;
+            Swal.fire({
+                title: 'Logout?',
+                text: 'Apakah Anda yakin ingin logout?',
+                icon: 'warning',
+                showCancelButton: true,
+                dangerMode: true,
+                confirmButtonText: 'Ya!',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = hrefValue;
+                }
+            });
+        });
+</script>

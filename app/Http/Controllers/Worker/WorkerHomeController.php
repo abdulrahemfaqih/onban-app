@@ -26,7 +26,8 @@ class WorkerHomeController extends Controller
         }
     }
 
-    public function hitungHarga($id_order){
+    public function hitungHarga($id_order)
+    {
         $order = Pesanan::with(['customer', 'tipe_layanan'])->findOrFail($id_order);
         $worker = Worker::findOrFail(session('userData')->worker->id_worker);
 
@@ -82,9 +83,9 @@ class WorkerHomeController extends Controller
 
 
         // hitung harga
-        foreach($orders as $order){
-            if($order->status_order == "Menunggu Pekerja"){
-                if ($status_menerima_order == 1){
+        foreach ($orders as $order) {
+            if ($order->status_order == "Menunggu Pekerja") {
+                if ($status_menerima_order == 1) {
                     $order->total_harga = 1;
                     $order->total_harga = $this->hitungHarga($order->id_order);
                 }

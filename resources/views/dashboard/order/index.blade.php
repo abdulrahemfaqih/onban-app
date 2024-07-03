@@ -97,7 +97,7 @@
                             <td class="py-2 px-4 border-b">
                                 {{ ($orders_selesai->currentPage() - 1) * $orders_selesai->perPage() + $loop->iteration }}
                             </td>
-                            <td class="py-2 px-4 border-b">{{ $order->id }}</td>
+                            <td class="py-2 px-4 border-b">{{ $order->id_order }}</td>
                             <td class="py-2 px-4 border-b">{{ $order->customer->nama }}</td>
                             <td class="py-2 px-4 border-b">{{ $order->worker->nama }}</td>
                             <td class="py-2 px-4 border-b">{{ $order->status_order }}</td>
