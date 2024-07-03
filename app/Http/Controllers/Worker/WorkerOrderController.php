@@ -84,6 +84,12 @@ class WorkerOrderController extends Controller
         ]);
     }
 
+    public function getOrderStatus(string $id_order)
+    {
+        $order = Pesanan::with(['customer', 'tipe_layanan', 'voucher', 'worker'])->findOrFail($id_order);
+        return response()->json($order);
+    }
+
     public function finishedOrder($id_order)
     {
         $order = Pesanan::with(['customer', 'tipe_layanan'])->findOrFail($id_order);

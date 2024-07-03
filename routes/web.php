@@ -44,7 +44,7 @@ use App\Http\Controllers\User\Order\UpdateStatusOrderController;
 // Route Session untuk ngecek user pertama kali masuk
 Route::get('/', SessionController::class);
 
-Route::get('/', [LandingPageController::class, 'index'])->name('landing-page')->middleware('guest');
+// Route::get('/', [LandingPageController::class, 'index'])->name('landing-page')->middleware('guest');
 // Route Login Customer
 Route::prefix('login')->group(function () {
     // Route Login
@@ -142,6 +142,8 @@ Route::prefix('worker')->group(function () {
         Route::get("/order/{id_order}/pembayaran", [WorkerOrderController::class, 'konfirmasiPembayaran'])->name('worker-order-konfirmasi-pembayaran');
         Route::get("/order/{id_order}/selesai", [WorkerOrderController::class, 'finishedOrder'])->name('worker-order-selesai');
         Route::post("/status-terima-order", [WorkerUpdateStatusOrder::class, "updateStatus"])->name('status-terima-order');
+        Route::get('/order/status/{id_order}', [WorkerOrderController::class, 'getOrderStatus'])->name('order-status');
+
     });
 
     // Route

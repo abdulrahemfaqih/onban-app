@@ -29,15 +29,10 @@
                     <p class="pl-2 pt-2">Rating: {{ $rataRataRating }}/5</p>
                 </div>
             </div>
-            <div class="w-full flex justify-between py-2.5 lg:px-32 px-2 h-1/4">
+            <div class="w-full flex justify-center gap-x-10 py-2.5 lg:px-32 px-2 h-1/4">
                 <div class="flex justify-center content-center h-1/2">
                     <a href="{{ route('cancel-order', $order->id_order) }}" id="cancel-link"
                         class="my-auto hover:text-gray-200 hover:border-gray-200 border-white border-2 mx-auto text-white p-1 rounded-md">Batalkan</a>
-                </div>
-                <div class="flex justify-center content-center h-1/2">
-                    <a href="{{ route('userChat') }}"
-                        class="my-auto hover:text-gray-200 hover:border-gray-200 border-white border-2 mx-auto text-white p-1 rounded-md">Chat
-                        Worker</a>
                 </div>
                 <div class="flex justify-center content-center h-1/2">
                     <a href="{{ route('payment-info', $order->id_order) }}"

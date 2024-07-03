@@ -17,10 +17,14 @@
     {{-- css mapbox --}}
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
 
+        {{-- Sweetalert2 --}}
+    <script src="{{ asset('assets/sweetalert2/sweetalert2.all.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('assets/sweetalert2/sweetalert2.css') }}">
+
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app-COrwD6bZ.css') }}">
-    <link rel="stylesheet" href="{{ asset('build/assets/app-C9pRe2dr.js') }}"> --}}
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+    <link rel="stylesheet" href="{{ asset('build/assets/app-BPxFg8fj.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app-C9pRe2dr.js') }}"> --}}
     <title>{{ $title }} | onbann</title>
 </head>
 
@@ -33,6 +37,7 @@
         @include('partial.footer-worker')
     </div>
     @yield('js')
+    <script src="{{ asset('build/assets/app-C9pRe2dr.js') }}"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
 </body>
 

@@ -13,8 +13,8 @@
                                 class="bg-primary hover:bg-primary-dark rounded-lg w-full p-6 font-bold text-white flex justify-between"
                                 value="sepeda">
                                 <div>
-                                    <p class="py-2 text-2xl">{{ $tipeLayanan->nama_tipe_layanan }}</p>
-                                    <p class="text-lg text-left">{{ $tipeLayanan->harga_tipe_layanan }}</p>
+                                    <p class="py-2 text-2xl text-left">{{ $tipeLayanan->nama_tipe_layanan }}</p>
+                                    <p class="text-lg text-left">Rp. {{ $tipeLayanan->harga_tipe_layanan }}</p>
                                 </div>
                                 <img src="{{ asset('storage/' . $tipeLayanan->foto_tipe_layanan) }}" alt="" class="drop-shadow-md"
                                     width="130px">

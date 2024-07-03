@@ -10,10 +10,10 @@
          <div class="w-16 text-white h-full my-auto text-center flex flex-col justify-center ">
              <a href="{{ route('profile') }}" class="flex flex-col w-full justify-center">
                 <div class="overflow-hidden mx-auto rounded-full w-10 h-10">
-                    <img src="{{ isset($customer->foto_profil) ? asset('storage/'. $customer->foto_profil) : asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}" alt=""
+                    <img src="{{ isset($customer->foto_profil) ? asset('storage/'. $customer->foto_profil) : asset('assets/images/default-foto.jpg') }}" alt=""
                         class="object-cover mx-auto w-full h-full">
                 </div>
-              
+
                  <div>
                      <p class="text-sm">Akun</p>
                  </div>

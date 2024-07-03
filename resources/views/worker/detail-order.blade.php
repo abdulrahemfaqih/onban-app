@@ -53,7 +53,7 @@
                         </button>
                     </a>
                 @else
-                    <a href="{{ route('worker-order', ['id_order' => $order->id_order]) }}">
+                    <a id="accept-order" href="{{ route('worker-order', ['id_order' => $order->id_order]) }}">
                         <button
                             type="button"
                             class="text-white bg-primary hover:bg-primary-dark focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Terima
@@ -70,4 +70,24 @@
         </div>
     </div>
 </div>
+<script>
+      // pop up when accept order
+        document.getElementById('accept-order').addEventListener('click', function(event) {
+            event.preventDefault();
+            const hrefValue = event.currentTarget.href;
+            Swal.fire({
+                title: 'Terima Order ?',
+                text: 'Apakah Anda yakin ingin mengambil order ini?',
+                icon: 'info',
+                showCancelButton: true,
+                dangerMode: true,
+                confirmButtonText: 'Ya!',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = hrefValue;
+                }
+            });
+        });
+</script>
 @endsection

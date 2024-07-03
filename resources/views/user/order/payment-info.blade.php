@@ -26,6 +26,9 @@
                </div>
                 <div class="flex flex-col text-black flex-wrap text-sm gap-1 ">
                     <p>{{ $order->tipe_layanan->nama_tipe_layanan }}</p>
+                    @if ()
+
+                    @endif
                     <p>{{ $order->voucher->potongan_harga *100 }}%</p>
                     <p>Rp {{ $order->tipe_layanan->harga_tipe_layanan }}</p>
                     <p>{{ $order->jarak }} km</p>

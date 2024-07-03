@@ -4,20 +4,59 @@
     <div id="map" style='width: 100%; height: 400px;' class=""></div>
     <div class="flex justify-between gap-x-3">
         <p class="border border-gray-300 p-3 rounded-lg shadow">{{ $order->jarak }} KM</p>
-        <p class="border border-gray-300 p-3 rounded-lg shadow">Estimasi Biaya: {{ round($order->total_harga) }} </p>
+        <p class="border border-gray-300 p-3 rounded-lg shadow">Estimasi Biaya: Rp. {{ round($order->total_harga) }} </p>
     </div>
     <p class="border border-gray-300 p-3 rounded-lg shadow">
         <b>Lokasi User:</b> {{ $order->alamat }}<br>
         <b>Catatan:</b> {{ $order->catatan }}
     </p>
-    
-    <a href="{{ route('worker-order-konfirmasi-pembayaran', ['id_order' => $order->id_order]) }}" class="flex justify-center">
+
+    <a id="done" href="{{ route('worker-order-konfirmasi-pembayaran', ['id_order' => $order->id_order]) }}" class="flex justify-center">
         <button class="border border-gray-300 w-screen p-3 mb-3 bg-secondary text-white rounded-lg shadow hover:bg-blue-900">Selesaikan Pesanan</button>
     </a>
 @endsection
 
 @section('js')
     <script>
+        document.getElementById('done').addEventListener('click', function(event) {
+            event.preventDefault();
+            const hrefValue = event.currentTarget.href;
+
+            fetch('{{ route('order-status', ['id_order' => $order->id_order]) }}')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status_order === 'Dibatalkan') {
+                        // If order is cancelled, show alert and redirect to home
+                        Swal.fire({
+                            title: 'Pesanan Dibatalkan',
+                            text: 'Pesanan ini telah dibatalkan.',
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            window.location.href = '{{ route('worker-home') }}';
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Selesai?',
+                            text: 'Apakah Anda yakin pesanan ini sudah selesai?',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            dangerMode: true,
+                            confirmButtonText: 'Ya!',
+                            cancelButtonText: 'Tidak'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = hrefValue;
+                            }
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching order status:', error);
+                    alert('Gagal memeriksa status pesanan. Periksa console untuk detailnya.');
+                });
+        });
+
         document.addEventListener('DOMContentLoaded', function() {
             mapboxgl.accessToken =
                 'pk.eyJ1IjoiYWJkdWxyYWhlbWZhcWloIiwiYSI6ImNsd3l4Nm5pNjAxZzYyanNlaGp1eW41dmQifQ.fyJP2_k7LV4_3NCH9sAFWw';
