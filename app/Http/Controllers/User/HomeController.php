@@ -22,7 +22,7 @@ class HomeController extends Controller
             ->whereIn('status_order', ['Menunggu Pekerja', 'Diproses'])
             ->first();
 
-        $profileFoto = $customer->foto_profil;
+        // $profileFoto = $customer->foto_profil;
         return view('user.index', [
             'customer' => $customer,
             "title" => "Home",
