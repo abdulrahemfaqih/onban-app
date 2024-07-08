@@ -18,7 +18,7 @@
 
 
             <div class="w-full h-3/4  flex lg:px-32">
-            <div class="w-20 ml-2 rounded-full h-14 md:h-20 flex justify-center overflow-hidden content-center">
+                <div class="w-20 ml-2 rounded-full h-20 md:h-20 flex justify-center overflow-hidden content-center">
                     <img class="w-full h-full object-cover mx-auto mt-2 border-gray-300 rounded-full"
                         src="{{ asset('storage/' . $order->worker->foto_formal) }}" alt="">
                 </div>
@@ -29,7 +29,7 @@
                     <p class="pl-2 pt-2">Rating: {{ $rataRataRating }}/5</p>
                 </div>
             </div>
-            <div class="w-full flex justify-center gap-x-10 py-2.5 lg:px-32 px-2 h-1/4">
+            <div class="w-full flex justify-between py-2.5 lg:px-32 px-2 h-1/4">
                 <div class="flex justify-center content-center h-1/2">
                     <a href="{{ route('cancel-order', $order->id_order) }}" id="cancel-link"
                         class="my-auto hover:text-gray-200 hover:border-gray-200 border-white border-2 mx-auto text-white p-1 rounded-md">Batalkan</a>
