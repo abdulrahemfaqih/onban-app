@@ -75,7 +75,7 @@
 
         $(document).ready(function() {
             $('#voucher').select2({
-                placeholder: "Use Voucher",
+                placeholder: "Pilih Voucher",
                 allowClear: true
             });
         });

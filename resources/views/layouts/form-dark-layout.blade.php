@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ asset('assets/images/workerLogo.svg') }}" type="image/png">
     <title>{{ $title }} | onbann</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app-COrwD6bZ.css') }}">
-    <link rel="stylesheet" href="{{ asset('build/assets/app-C9pRe2dr.js') }}"> --}}
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+    <link rel="stylesheet" href="{{ asset('build/assets/app-BPxFg8fj.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app-C9pRe2dr.js') }}">  --}}
     <style>
         * {
             /* border: 1px solid white; */
@@ -18,7 +18,7 @@
 </head>
 
 <body class="bg-secondary">
-    <div class="border-2 min-h-screen flex flex-col p-6 items-center justify-center">
+    <div class=" min-h-screen flex flex-col p-6 items-center justify-center">
         <div class="flex justify-center mb-8">
             {{-- <h1 class="text-5xl m-5">Logo</h1> --}}
             <div class="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -30,6 +30,7 @@
         <p class="text-xs text-white text-center mt-5 justify-end">&copy; 2024 OnBan-Corporation</p>
     </div>
     </div>
+    <script src="{{ asset('build/assets/app-C9pRe2dr.js') }}"></script>
 </body>
 
 </html>

@@ -2,7 +2,7 @@
 @section('content')
     <div class="container mx-auto px-4 py-8">
         <p class="text-center font-bold text-gray-900 text-3xl mb-6">Ulasan</p>
-        
+
         <div class="text-center mb-6">
             <p class="text-md font-bold text-gray-800">Rata-rata Rating</p>
             <p class="text-3xl font-bold text-primary-dark dark:text-white">{{ number_format($average_rating, 1) }}/5</p>
@@ -10,6 +10,10 @@
 
         <div class="bg-white shadow overflow-hidden sm:rounded-lg">
             <ul role="list" class="divide-y divide-gray-200">
+                @if ($ulasan->isEmpty())
+                    <div class="flex items-center justify-center h-full">
+                        <p class="text-gray-500">Belum Ada Ulasan</p>
+                @endif
                 @foreach ($ulasan as $ulasan_item)
                 <li class="px-4 py-5 sm:px-6">
                     <div class="flex justify-between items-center">
